@@ -1,0 +1,30 @@
+{
+  "name": "biblioteca1",
+  "version": "1.0.0",
+  "description": "Proyecto Biblioteca",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/thesalinas/ProyectoWebBiblioteca.git"
+  },
+  "author": "Juan David Salinas, Roberto Escarpeta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thesalinas/ProyectoWebBiblioteca/issues"
+  },
+  "homepage": "https://github.com/thesalinas/ProyectoWebBiblioteca#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "firebase": "^7.19.1",
+    "firebase-admin": "^9.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
