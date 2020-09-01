@@ -6,11 +6,8 @@ const controlador = require('../controller/Admin.controller');
 router.get('/', controlador.inicio);
 router.post('/', controlador.inicio);
 router.get('/admin', controlador.admin);
-router.post('/guardar', controlador.guardar);
-
-router.get('contactenos', () => {
-    res.sender('Contactenos');
-});
-
+router.get('/contacto', controlador.ModuloContacto);
+router.get('/usuarios', controlador.ModuloUsuarios);
+router.get('/informacion', controlador.ModuloInfoOrganizacional);
 
 module.exports = router;
