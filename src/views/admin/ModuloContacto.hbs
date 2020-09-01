@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo Contacto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../public/css/estilos.css" />
+</head>
+
+<body>
+    {{> headeradmin}}
+    <div class="banner text-center">
+        <h1>Biblioteca virtual</h1>
+        <h2>Bienvenido al Modulo de Gestion de Contacto</h2>
+    </div>
+    {{> admin}}
+
+    <section class="info">
+        <div class="mi-flex row">
+            <div id="Noticia" class="container">
+                <h2>Agregar Informacion de Contacto</h2>
+                <div class="row mb-3">
+                    <div class="col">
+                        <input class="d-none" type="text" id="idcon">
+                        <label for="">Direccion</label>
+                        <input class="form-control" type="text" id="txtdire">
+                        <label for="">Telefono</label>
+                        <input class="form-control" type="text" id="txttele">
+                        <label for="">Conmutador</label>
+                        <input class="form-control" type="text" id="txtconmu">
+                        <label for="">Extencion</label>
+                        <input class="form-control" type="text" id="txtext">
+                        <label for="">Jefe direccion</label>
+                        <input class="form-control" type="text" id="txtjefe">
+                        <label for="">Correo Jefe direccion</label>
+                        <input class="form-control" type="text" id="txtcorrjefe">
+                        <label for="">Secretaria de la division</label>
+                        <input class="form-control" type="text" id="txtsecre">
+                        <label for="">Correo Secretaria</label>
+                        <input class="form-control" type="text" id="txtcorrsecre">
+                    </div>
+                </div>
+                <button id="btnAgregarContacto" onclick="agregarContacto()" class="btn btn-primary">Agregar
+                    Contacto</button>
+                <button id="btnActualizarContacto" onclick="actualizarContacto()" class="btn btn-warning">Actualizar
+                    Contacto</button>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="col">
+            <h2>Listado de Contacto</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Conmutador</th>
+                            <th scope="col">Extencion</th>
+                            <th scope="col">Jefe direccion</th>
+                            <th scope="col">Correo jefe</th>
+                            <th scope="col">Secretaria division</th>
+                            <th scope="col">Correo secretaria</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaContacto">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
