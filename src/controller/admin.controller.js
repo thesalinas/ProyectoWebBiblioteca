@@ -4,7 +4,6 @@ const controlador = {};
 const db = firebase.firestore();
 
 controlador.inicio = (req, res) => {
-
     res.render('index');
 }
 
