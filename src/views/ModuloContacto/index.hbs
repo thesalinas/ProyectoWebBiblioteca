@@ -26,29 +26,35 @@
                 <h2>Agregar Informacion de Contacto</h2>
                 <div class="row mb-3">
                     <div class="col">
-                        <input class="d-none" type="text" id="idcon">
-                        <label for="">Direccion</label>
-                        <input class="form-control" type="text" id="txtdire">
-                        <label for="">Telefono</label>
-                        <input class="form-control" type="text" id="txttele">
-                        <label for="">Conmutador</label>
-                        <input class="form-control" type="text" id="txtconmu">
-                        <label for="">Extencion</label>
-                        <input class="form-control" type="text" id="txtext">
-                        <label for="">Jefe direccion</label>
-                        <input class="form-control" type="text" id="txtjefe">
-                        <label for="">Correo Jefe direccion</label>
-                        <input class="form-control" type="text" id="txtcorrjefe">
-                        <label for="">Secretaria de la division</label>
-                        <input class="form-control" type="text" id="txtsecre">
-                        <label for="">Correo Secretaria</label>
-                        <input class="form-control" type="text" id="txtcorrsecre">
+                        <form class="form-inline" method="POST" action="/guardar">
+                            <input class="d-none" type="text" name="idcon">
+                            <label for="">Direccion</label>
+                            <input class="form-control" type="text" name="txtdire">
+                            <label for="">Telefono</label>
+                            <input class="form-control" type="text" name="txttele">
+                            <label for="">Conmutador</label>
+                            <input class="form-control" type="text" name="txtconmu">
+                            <label for="">Extencion</label>
+                            <input class="form-control" type="text" name="txtext">
+                            <label for="">Jefe direccion</label>
+                            <input class="form-control" type="text" name="txtjefe">
+                            <label for="">Correo Jefe direccion</label>
+                            <input class="form-control" type="text" name="txtcorrjefe">
+                            <label for="">Secretaria de la division</label>
+                            <input class="form-control" type="text" name="txtsecre">
+                            <label for="">Correo Secretaria</label>
+                            <input class="form-control" type="text" name="txtcorrsecre">
+                            <button name="btnAgregarContacto" class="btn btn-primary">Agregar
+                                Contacto</button>
+
+
+                        </form>
+
                     </div>
                 </div>
-                <button id="btnAgregarContacto" onclick="agregarContacto()" class="btn btn-primary">Agregar
-                    Contacto</button>
-                <button id="btnActualizarContacto" onclick="actualizarContacto()" class="btn btn-warning">Actualizar
-                    Contacto</button>
+
+                <!--<button id="btnActualizarContacto" onclick="actualizarContacto()" class="btn btn-warning">Actualizar
+                    Contacto</button> -->
             </div>
         </div>
     </section>

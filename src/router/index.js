@@ -9,5 +9,6 @@ router.get('/admin', controlador.admin);
 router.get('/contacto', controlador.ModuloContacto);
 router.get('/usuarios', controlador.ModuloUsuarios);
 router.get('/informacion', controlador.ModuloInfoOrganizacional);
+router.post('/guardar', controlador.guardar);
 
 module.exports = router;
