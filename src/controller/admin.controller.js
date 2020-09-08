@@ -9,6 +9,12 @@ controlador.inicio = (req, res) => {
 controlador.admin = (req, res) => {
     res.render('./admin')
 }
+controlador.Login = (req, res) => {
+    res.render('./Login')
+}
+controlador.Registrarse = (req, res) => {
+    res.render('./Registrarse')
+}
 controlador.ModuloUsuarios = (req, res) => {
     res.render('./ModuloUsuarios')
 }
@@ -103,4 +109,56 @@ controlador.actualizarContacto = (req, res) => {
 
     res.render('./admin')
 }
+
+controlador.guardarInfo = (req, res) => {
+    console.log(req.body);
+
+    db.collection("InfoOrganizacional").add({
+        mision:req.body.mision,
+        vision: req.body.vision,
+        objetivos: req.body.objetivos,
+        organigrama: organigrama,   
+    })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            alert('Datos agregados correctamente', docRef.id);
+            limpiarDatos();
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+
+
+    res.render('./ModuloInfoOrganizacional')
+}
+
+
+controlador.guardarNoticia = (req, res) => {
+    console.log(req.body);
+
+    db.collection("Noticias").add({
+        Titulo:req.body.Descripcion,
+        Descripcion: req.body.descripcion,
+        imagen: req.body.imagen,
+        autor: req.body.autor,  
+        fecha_pub: req.body.fecha, 
+    })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            alert('Datos agregados correctamente', docRef.id);
+            limpiarDatos();
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+
+
+    res.render('./ModuloNoticia')
+}
+
+
+
+
+
+
 module.exports = controlador;
