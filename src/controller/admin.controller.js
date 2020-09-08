@@ -9,6 +9,12 @@ controlador.inicio = (req, res) => {
 controlador.admin = (req, res) => {
     res.render('./admin')
 }
+controlador.Login = (req, res) => {
+    res.render('./Login')
+}
+controlador.Registrarse = (req, res) => {
+    res.render('./Registrarse')
+}
 controlador.ModuloUsuarios = (req, res) => {
     res.render('./ModuloUsuarios')
 }

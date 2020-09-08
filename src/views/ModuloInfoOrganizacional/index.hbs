@@ -1,73 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+{{> headeradmin}}
+<div class="banner text-center">
+    <h1>Biblioteca virtual</h1>
+    <h2>Bienvenido al Modulo de Gestion de Usuarios</h2>
+</div>
+{{> admin}}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modulo informacion</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../public/css/estilos.css" />
-</head>
-
-<body>
-    {{> headeradmin}}
-    <div class="banner text-center">
-        <h1>Biblioteca virtual</h1>
-        <h2>Bienvenido al Modulo de Gestion de Usuarios</h2>
-    </div>
-    {{> admin}}
-
-    <section class="info">
-        <div class="mi-flex row">
-            <div id="Noticia" class="container">
-                <h2>Agregar Informacion</h2>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input class="d-none" type="text" id="idinfo">
+<section class="info">
+    <div class="mi-flex row">
+        <div id="Noticia" class="container">
+            <h2>Agregar Informacion</h2>
+            <div class="row mb-3">
+                <div class="col">
+                    <form action="" method="">
+                        <input class="d-none" type="text" name="idinfo">
 
                         <label for="">Mision</label>
-                        <textarea class="form-control" id="mision" rows="3"></textarea>
+                        <textarea class="form-control" name="mision" rows="3"></textarea>
 
                         <label for="">Vision</label>
-                        <textarea class="form-control" id="vision" rows="3"></textarea>
+                        <textarea class="form-control" name="vision" rows="3"></textarea>
 
                         <label for="">Objetivos</label>
-                        <textarea class="form-control" id="objetivos" rows="3"></textarea>
+                        <textarea class="form-control" name="objetivos" rows="3"></textarea>
 
                         <label for="exampleFormControlFile1">Organigrama</label>
-                        <input type="file" class="form-control-file" id="organigrama">
-                    </div>
+                        <input type="file" class="form-control-file" name="organigrama">
+
+                        <button name="btnAgregarinfo" class="btn btn-primary">Agregar Informacion</button>
+                        <button name="btnActualizarinfo" class="btn btn-warning">Actualizar Informacion</button>
+
+                    </form>
+
                 </div>
-                <button id="btnAgregarinfo" onclick="agregarinfo()" class="btn btn-primary">Agregar Informacion</button>
-                <button id="btnActualizarinfo" onclick="actualizarinfo()" class="btn btn-warning">Actualizar
-                    Informacion</button>
             </div>
-        </div>
-    </section>
-    <div class="container">
-        <div class="col">
-            <h2>Informacion organizacional</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Mision</th>
-                            <th scope="col">Vision</th>
-                            <th scope="col">Objetivos</th>
-                            <th scope="col">Organigrama</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="informacion">
-                    </tbody>
-                </table>
-            </div>
+
         </div>
     </div>
-
-</body>
-
-</html>
+</section>
+<div class="container">
+    <div class="col">
+        <h2>Informacion organizacional</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Mision</th>
+                        <th scope="col">Vision</th>
+                        <th scope="col">Objetivos</th>
+                        <th scope="col">Organigrama</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="informacion">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

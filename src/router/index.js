@@ -7,6 +7,8 @@ router.get('/', controlador.inicio);
 router.post('/', controlador.inicio);
 router.get('/admin', controlador.admin);
 router.get('/contacto', controlador.ModuloContacto);
+router.get('/Login', controlador.Login);
+router.get('/Registrarse', controlador.Registrarse);
 router.get('/usuarios', controlador.ModuloUsuarios);
 router.get('/informacion', controlador.ModuloInfoOrganizacional);
 router.post('/guardarcontacto', controlador.guardarcontacto);
