@@ -18,6 +18,9 @@ controlador.Registrarse = (req, res) => {
 controlador.ModuloUsuarios = (req, res) => {
     res.render('./ModuloUsuarios')
 }
+controlador.ModuloNoticia = (req, res) => {
+    res.render('./ModuloNoticia')
+}
 controlador.ModuloContacto = (req, res) => {
     res.render('./ModuloContacto')
 }
