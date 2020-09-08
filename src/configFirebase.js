@@ -1,21 +1,22 @@
 const admin = require("firebase-admin");
 const firebase = require('firebase')
 
-const serviceAccount = require("./proyectobibliotecariaudla-firebase-adminsdk-ckz55-1a9b6138a7");
+const serviceAccount = require("./proyectowebsito-firebase-adminsdk-x28cj-442594c703.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://proyectobibliotecariaudla.firebaseio.com"
+    databaseURL: "https://proyectowebsito.firebaseio.com"
 });
 
 var firebaseConfig = {
-  apiKey: "AIzaSyB9wYAeBrXYb2ODfV0dJzxTR266jvXQ6bk",
-  authDomain: "proyectobibliotecariaudla.firebaseapp.com",
-  databaseURL: "https://proyectobibliotecariaudla.firebaseio.com",
-  projectId: "proyectobibliotecariaudla",
-  storageBucket: "proyectobibliotecariaudla.appspot.com",
-  messagingSenderId: "1053389462582",
-  appId: "1:1053389462582:web:55163b63619ab60be00c97",
+  apiKey: "AIzaSyDC9sjUZcsZVCl4AhZkB1Xl_mcsUmRLFwU",
+  authDomain: "proyectowebsito.firebaseapp.com",
+  databaseURL: "https://proyectowebsito.firebaseio.com",
+  projectId: "proyectowebsito",
+  storageBucket: "proyectowebsito.appspot.com",
+  messagingSenderId: "744215087467",
+  appId: "1:744215087467:web:cfc9923a06d14588fc242e"
+
   };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

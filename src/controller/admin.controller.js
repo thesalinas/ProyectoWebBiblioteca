@@ -18,10 +18,70 @@ controlador.ModuloContacto = (req, res) => {
 controlador.ModuloInfoOrganizacional = (req, res) => {
     res.render('./ModuloInfoOrganizacional')
 }
-controlador.guardar = (req, res) => {
+controlador.guardarcontacto = (req, res) => {
     console.log(req.body);
 
-    db.collection("noticias").doc('VbUXmXZMKSeyyjUR0NqX').set({
+    db.collection("contacto").add({
+        direccion:req.body.txtdire,
+        telefono: req.body.txttele,
+        conmutador: req.body.txtconmu,
+        extencion: req.body.txtext,
+        jefe: req.body.txtjefe,
+        correojefe: req.body.txtcorrjefe,
+        secre: req.body.txtsecre,
+        correosecre: req.body.txtcorrsecre      
+    })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            alert('Datos agregados correctamente', docRef.id);
+            limpiarDatos();
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+
+
+    res.render('./ModuloContacto')
+}
+
+controlador.leercontacto = (req, res) => {
+    console.log(req.body);
+    listaContacto.req.body = "";
+    
+    db.collection("contacto").get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                listaContacto.req.body += `
+                        <tr>
+                            <td>${doc.data().txtdire}</td>
+                            <td>${doc.data().txttele}</td>
+                            <td>${doc.data().conmutador}</td>
+                            <td>${doc.data().extencion}</td>
+                            <td>${doc.data().jefe}</td>
+                            <td>${doc.data().correojefe}</td>
+                            <td>${doc.data().secre}</td>
+                            <td>${doc.data().correosecre}</td>
+
+                            <td>
+                                <button onclick="eliminar('${doc.id}')" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                <button onclick="editar('${doc.id}')" class="btn btn-info"><i class="far fa-edit"></i></button>
+                            </td>
+                        </tr>           
+                    `;
+            });
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+
+    res.render('./admin')
+}
+
+
+controlador.actualizarContacto = (req, res) => {
+    console.log(req.body);
+
+    db.collection("contacto").doc('RxxrlnHFH6nrfvw0JMO4').set({
         direccion:req.body.txtdire,
         telefono: req.body.txttele,
         conmutador: req.body.txtconmu,
