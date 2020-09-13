@@ -15,11 +15,11 @@
 <body>
     {{>header}}
 
-    
+
     <section class="info">
         <div class="mi-flex row">
             <div class="col text-center">
-                
+
 
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
@@ -53,24 +53,38 @@
                 <div class="col-md-10 text-center">
                     <i class="fas fa-concierge-bell fa-4x"></i>
                     <h2>Ultimas Noticias</h2>
-                    <div class="main" id="listaNoticia"></div>                  
+                    <div class="main" id="listaNoticia"></div>
                 </div>
             </div>
         </div>
         <div class="todas-noticias text-center">
-       <button type="button" class="boton-noticias btn btn-success" onclick="noticias()">Ver todas las Noticias</button>
-    </div>
+            <button type="button" class="boton-noticias btn btn-success" onclick="noticias()">Ver todas las
+                Noticias</button>
+        </div>
 
+        <footer class="footer mt-auto py-3">
+            <div class="container">
 
+                <p class="texto-footer text-center">
+                    {{#each contactos}}
+                    {{this.direccion.stringValue}}
+                    {{this.telefono.stringValue}}</td>
+                    {{this.conmutador.stringValue}}
+                    {{this.extencion.stringValue}}
+                    {{this.jefe.stringValue}}
+                    {{this.correojefe.stringValue}}
+                    {{this.secre.stringValue}}
+                    {{this.correosecre.stringValue}}
+                    {{/each}}
+                    
+                </p>
 
-    {{>footer}}
+            </div>
+            
+        </footer>
+        
+    </section>
+
 </body>
 
 </html>
-
-
-
-
-
-
-

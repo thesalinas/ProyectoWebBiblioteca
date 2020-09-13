@@ -5,6 +5,7 @@ const controlador = require('../controller/Admin.controller');
 
 router.get('/', controlador.inicio);
 router.post('/', controlador.inicio);
+router.get('/', controlador.leercontactoinicio);
 router.get('/admin', controlador.admin);
 router.get('/contacto', controlador.ModuloContacto);
 router.get('/noticia', controlador.ModuloNoticia);

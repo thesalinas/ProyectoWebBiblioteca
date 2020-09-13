@@ -1,6 +1,6 @@
 {{> headeradmin}}
 <div class="banner text-center">
-    
+
     <h2>Bienvenido al Modulo de Gestion de Contacto</h2>
 </div>
 {{> admin}}
@@ -62,9 +62,24 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody name="listaContacto">
+                <tbody name="">
+                    {{#each contactos}}
+                    <tr>
+                        <td>{{this.direccion.stringValue}}</td>
+                        <td>{{this.telefono.stringValue}}</td>
+                        <td>{{this.conmutador.stringValue}}</td>
+                        <td>{{this.extencion.stringValue}}</td>
+                        <td>{{this.jefe.stringValue}}</td>
+                        <td>{{this.correojefe.stringValue}}</td>
+                        <td>{{this.secre.stringValue}}</td>
+                        <td>{{this.correosecre.stringValue}}</td>
+
+                    </tr>
+                    {{/each}}
+
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
