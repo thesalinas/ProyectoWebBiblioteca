@@ -51,9 +51,18 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody id="informacion">
+                <tbody id="">
+                    {{#each infoorganizacional}}
+                    <tr>
+                        <td>{{this.mision.stringValue}}</td>
+                        <td>{{this.vision.stringValue}}</td>
+                        <td>{{this.objetivos.stringValue}}</td>
+                        <td>{{this.organigrama.stringValue}}</td>
+                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
+            
         </div>
     </div>
 </div>

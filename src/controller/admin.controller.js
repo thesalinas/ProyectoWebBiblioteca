@@ -67,6 +67,7 @@ controlador.leercontacto = async(req, res) => {
     res.render('./ModuloContacto',{contactos})
 }
 
+
 controlador.leercontactoinicio = async(req, res) => {
     const contactos= [];
     
@@ -79,7 +80,7 @@ controlador.leercontactoinicio = async(req, res) => {
     })  
     ;
     console.log(contactos,"R");
-    res.render('./',{contactos})
+    res.render('./ModuloInfoOrganizacional',{contactos})
 }
 
 
@@ -116,7 +117,7 @@ controlador.guardarInfo = (req, res) => {
         mision:req.body.mision,
         vision: req.body.vision,
         objetivos: req.body.objetivos,
-        organigrama: organigrama,   
+        organigrama: req.body.organigrama,   
     })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -126,20 +127,31 @@ controlador.guardarInfo = (req, res) => {
         .catch((error) => {
             console.error("Error: ", error);
         });
-
-
     res.render('./ModuloInfoOrganizacional')
 }
-
+controlador.leerinfoorganizacional = async(req, res) => {
+    const infoorganizacional= [];
+    
+    await db.collection("InfoOrganizacional").get()
+    .then((querySnapshot) => {
+        querySnapshot._snapshot.docChanges.map((value)=> {
+            console.log(value.doc.objectValue.proto.mapValue);
+            infoorganizacional.push(value.doc.objectValue.proto.mapValue.fields);
+        })     
+    })  
+    ;
+    console.log(contactos,"R");
+    res.render('./ModuloInfoOrganizacional',{infoorganizacional})
+}
 
 controlador.guardarNoticia = (req, res) => {
     console.log(req.body);
 
     db.collection("Noticias").add({
-        Titulo:req.body.Descripcion,
+        Titulo:req.body.titulo,
         Descripcion: req.body.descripcion,
         imagen: req.body.imagen,
-        autor: req.body.autor,  
+        autor: req.body.Autor,  
         fecha_pub: req.body.fecha, 
     })
         .then((docRef) => {
@@ -166,6 +178,7 @@ controlador.leernoticia = async(req, res) => {
         })     
     })  
     ;
+    
     console.log(noticias,"R");
     res.render('./ModuloNoticia',{noticias})
 }

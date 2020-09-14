@@ -16,6 +16,7 @@ router.get('/informacion', controlador.ModuloInfoOrganizacional);
 router.post('/guardarcontacto', controlador.guardarcontacto);
 router.get('/guardarcontacto', controlador.leercontacto);
 router.post('/guardarInfo', controlador.guardarInfo);
+router.get('/guardarInfo', controlador.leerinfoorganizacional);
 router.post('/guardarNoticia', controlador.guardarNoticia);
 router.get('/guardarNoticia', controlador.leernoticia);
 

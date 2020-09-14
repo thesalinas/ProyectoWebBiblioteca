@@ -11,10 +11,10 @@
             <h2>Agregar Noticia</h2>
             <div class="row mb-3">
                 <form class="form" method="POST" action="/guardarNoticia">
-                    <input class="d-none" type="text" name="id">
+                    <!--<input class="d-none" type="text" name="id">-->
 
                     <label for="">Titulo Noticia</label>
-                    <input class="form-control" type="text" name="noticia">
+                    <input class="form-control" type="text" name="titulo">
 
                     <label for="">Descripcion</label>
                     <textarea class="form-control" name="descripcion" rows="3"></textarea>
@@ -51,6 +51,8 @@
                     <tr>
                         <th scope="col">Titulo</th>
                         <th scope="col">Descripcion</th>
+                         <th scope="col">Autor</th>
+                         <th scope="col">fecha_pub</th>
                         <th scope="col">Imagen</th>
                         <th scope="col"></th>
                     </tr>
@@ -59,10 +61,10 @@
                     {{#each noticias}}
                     <tr>
                         <td>{{this.Titulo.stringValue}}</td>
-                        <td>{{this.imagen.stringValue}}</td>
-                        <td>{{this.Descripcion.stringValue}}</td>
+                        <td>{{this.Descripcion.stringValue}}</td>   
                         <td>{{this.autor.stringValue}}</td>
                         <td>{{this.fecha_pub.stringValue}}</td>
+                        <td>{{this.imagen.stringValue}}</td>
                     </tr>
                     {{/each}}
 
