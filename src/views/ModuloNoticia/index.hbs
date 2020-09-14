@@ -19,9 +19,17 @@
                     <label for="">Descripcion</label>
                     <textarea class="form-control" name="descripcion" rows="3"></textarea>
 
+                    <label for="exampleFormControlFile1">Autor</label>
+                     <input class="form-control" type="text" name="Autor">
+
 
                     <label for="exampleFormControlFile1">Imagen Noticia</label>
                     <input type="file" class="form-control-file" name="imagen">
+
+                    <label for="exampleFormControlFile1">Fecha publicacion</label>
+                    <input type="date" name="fecha">
+
+
 
                     <button name="btnAgregar" class="btn btn-primary">Agregar Noticia</button>
                     <button name="btnActualizar" class="btn btn-warning">Actualizar Noticia</button>
@@ -47,7 +55,17 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody id="listaNoticia">
+                <tbody name="">
+                    {{#each noticias}}
+                    <tr>
+                        <td>{{this.Titulo.stringValue}}</td>
+                        <td>{{this.imagen.stringValue}}</td>
+                        <td>{{this.Descripcion.stringValue}}</td>
+                        <td>{{this.autor.stringValue}}</td>
+                        <td>{{this.fecha_pub.stringValue}}</td>
+                    </tr>
+                    {{/each}}
+
                 </tbody>
             </table>
         </div>

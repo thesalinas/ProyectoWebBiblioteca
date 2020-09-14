@@ -66,6 +66,7 @@ controlador.leercontacto = async(req, res) => {
     console.log(contactos,"R");
     res.render('./ModuloContacto',{contactos})
 }
+
 controlador.leercontactoinicio = async(req, res) => {
     const contactos= [];
     
@@ -154,6 +155,60 @@ controlador.guardarNoticia = (req, res) => {
     res.render('./ModuloNoticia')
 }
 
+controlador.leernoticia = async(req, res) => {
+    const noticias= [];
+    
+    await db.collection("Noticias").get()
+    .then((querySnapshot) => {
+        querySnapshot._snapshot.docChanges.map((value)=> {
+            console.log(value.doc.objectValue.proto.mapValue);
+            noticias.push(value.doc.objectValue.proto.mapValue.fields);
+        })     
+    })  
+    ;
+    console.log(noticias,"R");
+    res.render('./ModuloNoticia',{noticias})
+}
+
+
+
+controlador.registrarUsuario = (req, res) => {
+    console.log(req.body);
+
+    db.collection("Usuarios").add({
+        Usuario:req.body.txtusuario,
+        Contrasena: req.body.txtcontrasena1,
+        Contrasena2: req.body.txtcontrasena2,
+        Rol: req.body.rol,  
+            })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            alert('Datos agregados correctamente', docRef.id);
+            limpiarDatos();
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+
+
+    res.render('./Login')
+}
+
+
+controlador.leerUsuarios = async(req, res) => {
+    const usuarios= [];
+    
+    await db.collection("Usuarios").get()
+    .then((querySnapshot) => {
+        querySnapshot._snapshot.docChanges.map((value)=> {
+            console.log(value.doc.objectValue.proto.mapValue);
+            usuarios.push(value.doc.objectValue.proto.mapValue.fields);
+        })     
+    })  
+    ;
+    console.log(usuarios,"R");
+    res.render('./ModuloUsuarios',{usuarios})
+}
 
 
 

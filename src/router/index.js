@@ -17,5 +17,8 @@ router.post('/guardarcontacto', controlador.guardarcontacto);
 router.get('/guardarcontacto', controlador.leercontacto);
 router.post('/guardarInfo', controlador.guardarInfo);
 router.post('/guardarNoticia', controlador.guardarNoticia);
+router.get('/guardarNoticia', controlador.leernoticia);
+
+router.post('/registrarUsuario', controlador.registrarUsuario);
 
 module.exports = router;

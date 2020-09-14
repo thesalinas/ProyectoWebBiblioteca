@@ -3,19 +3,19 @@
         <div class="encabezado">
             <h1>Sistema Bibliotecario: Registro</h1>
         </div>
-        <form method="" action="">
+        <form method="POST" action="/registrarUsuario">
             <h2>Usuario</h2>
             <input type="text" name="txtusuario" id="txtusuario" placeholder="Ingresar Usuario" /><br />
             <h2>Contraseña</h2>
-            <input type="password" name="txtcontraseña1" id="txtcontraseña1" placeholder="Ingresar Contraseña" /><br />
+            <input type="password" name="txtcontrasena1" id="txtcontraseña1" placeholder="Ingresar Contraseña" /><br />
             <h2>Repita la Contraseña</h2>
-            <input type="password" name="txtcontraseña2" id="txtcontraseña2" placeholder="Ingresar Contraseña" /><br />
+            <input type="password" name="txtcontrasena2" id="txtcontraseña2" placeholder="Ingresar Contraseña" /><br />
             <h2>rol</h2>
-            <select id="rol" class="" name="">
+            <select id="rol" class="" name="rol">
                 <option value="Administrador">Administrador</option>
                 <option value="Estudiante">Estudiante</option>
             </select> <br>
-            <button type="button" id="btnregistro">Ingresar</button>
+            <button name="btnRegistrarUsuario" class="btn btn-primary">Registrar</button>
         </form>
         <div class="olvido">
             <a href="vistas/recuperar.html">¿Olvidó su nombre de usuario? </a>

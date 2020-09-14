@@ -10,7 +10,7 @@
             <div id="Noticia" class="container">
                 <h2>Agregar Usuarios</h2>
 
-                <div class="row mb-3">
+                <form class="form" method="POST" action="/registrarUsuario">
                     <div class="col">
                         <input class="d-none" type="text" id="id">
 
@@ -30,11 +30,10 @@
                             <option value="Docente">Docente</option>
                         </select>
                     </div>
-
-                </div>
-                <button id="gregar" onclick="agregarUsuario()" class="btn btn-primary">Agregar Usuario</button>
-                <button id="Actualizar" onclick="actualizarUsuario()" class="btn btn-warning">Actualizar
-                    Usuario</button>
+                    <button id="gregar" onclick="agregarUsuario()" class="btn btn-primary">Agregar Usuario</button>
+                    <button id="Actualizar" onclick="actualizarUsuario()" class="btn btn-warning">Actualizar
+                        Usuario</button>
+                </form>
             </div>
         </div>
     </section>
@@ -52,7 +51,16 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody id="listaUsuario">
+                    <tbody name="">
+                        {{#each usuarios}}
+                        <tr>
+                            <td>{{this.Usuario.stringValue}}</td>
+                            <td>{{this.Contrasena.stringValue}}</td>
+                            <td>{{this.Contrasena2.stringValue}}</td>
+                            <td>{{this.rol.stringValue}}</td>
+                        </tr>
+                        {{/each}}
+
                     </tbody>
                 </table>
             </div>
