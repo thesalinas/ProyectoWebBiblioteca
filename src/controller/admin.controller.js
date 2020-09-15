@@ -140,7 +140,7 @@ controlador.leerinfoorganizacional = async(req, res) => {
         })     
     })  
     ;
-    console.log(contactos,"R");
+    console.log(infoorganizacional,"R");
     res.render('./ModuloInfoOrganizacional',{infoorganizacional})
 }
 
@@ -189,10 +189,10 @@ controlador.registrarUsuario = (req, res) => {
     console.log(req.body);
 
     db.collection("Usuarios").add({
-        Usuario:req.body.txtusuario,
-        Contrasena: req.body.txtcontrasena1,
-        Contrasena2: req.body.txtcontrasena2,
-        Rol: req.body.rol,  
+        Usuario:req.body.nombre,
+        Contrasena: req.body.contrasena,
+        Contrasena2: req.body.contrasena2,
+        Rol: req.body.rols,  
             })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -205,6 +205,27 @@ controlador.registrarUsuario = (req, res) => {
 
 
     res.render('./Login')
+}
+controlador.registrarUsuarioAdmi = (req, res) => {
+    console.log(req.body);
+
+    db.collection("Usuarios").add({
+        Usuario:req.body.nombre,
+        Contrasena: req.body.contrasena,
+        Contrasena2: req.body.contrasena2,
+        Rol: req.body.rols,  
+            })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            alert('Datos agregados correctamente', docRef.id);
+            limpiarDatos();
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+
+
+    res.render('./ModuloUsuarios')
 }
 
 

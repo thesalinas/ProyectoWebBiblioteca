@@ -32,9 +32,9 @@
 
 
                     <button name="btnAgregar" class="btn btn-primary">Agregar Noticia</button>
-                    <button name="btnActualizar" class="btn btn-warning">Actualizar Noticia</button>
+                 
                 </form>
-
+   
             </div>
 
 
@@ -65,6 +65,9 @@
                         <td>{{this.autor.stringValue}}</td>
                         <td>{{this.fecha_pub.stringValue}}</td>
                         <td>{{this.imagen.stringValue}}</td>
+                        <td>
+                            <button name="btnActualizar" class="btn btn-warning">Actualizar Noticia</button>
+                        </td>
                     </tr>
                     {{/each}}
 

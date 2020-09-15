@@ -20,6 +20,9 @@ router.get('/guardarInfo', controlador.leerinfoorganizacional);
 router.post('/guardarNoticia', controlador.guardarNoticia);
 router.get('/guardarNoticia', controlador.leernoticia);
 
+
 router.post('/registrarUsuario', controlador.registrarUsuario);
 
+router.get('/registrarUsuarioAdmi', controlador.leerUsuarios);
+router.post('/registrarUsuarioAdmi', controlador.registrarUsuarioAdmi);
 module.exports = router;

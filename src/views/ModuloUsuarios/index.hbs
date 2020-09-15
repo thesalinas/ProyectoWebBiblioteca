@@ -10,29 +10,28 @@
             <div id="Noticia" class="container">
                 <h2>Agregar Usuarios</h2>
 
-                <form class="form" method="POST" action="/registrarUsuario">
+                <form class="form" method="POST" action="/registrarUsuarioAdmin">
                     <div class="col">
-                        <input class="d-none" type="text" id="id">
+                        <input class="d-none" type="text" name="id">
 
                         <label for="">Nombre</label>
-                        <input class="form-control" type="text" id="nombre">
+                        <input class="form-control" type="text" name="nombre">
 
                         <label for="">Contraseña</label>
-                        <input class="form-control" type="password" id="contraseña">
+                        <input class="form-control" type="password" name="contrasena">
 
                         <label for="">Repetir contraseña</label>
-                        <input class="form-control" type="password" id="contraseña2">
+                        <input class="form-control" type="password" name="contrasena2">
 
                         <label class="mt-3" for="">Rol</label>
-                        <select id="rol" class="form-control" name="">
+                        <select id="" class="form-control" name="rols">
                             <option value="Administrador">Administrador</option>
                             <option value="Estudiante">Estudiante</option>
                             <option value="Docente">Docente</option>
                         </select>
                     </div>
-                    <button id="gregar" onclick="agregarUsuario()" class="btn btn-primary">Agregar Usuario</button>
-                    <button id="Actualizar" onclick="actualizarUsuario()" class="btn btn-warning">Actualizar
-                        Usuario</button>
+                    <button name="btnRegistrarse" class="btn btn-primary">Agregar Usuario</button>
+
                 </form>
             </div>
         </div>
@@ -47,6 +46,7 @@
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Contraseña</th>
+                            <th scope="col">Contraseña2</th>
                             <th scope="col">Rol</th>
                             <th scope="col"></th>
                         </tr>
@@ -58,6 +58,11 @@
                             <td>{{this.Contrasena.stringValue}}</td>
                             <td>{{this.Contrasena2.stringValue}}</td>
                             <td>{{this.rol.stringValue}}</td>
+                            <td>
+                                <button name="Actualizar"  class="btn btn-warning">Actualizar
+                                    Usuario</button>
+
+                            </td>
                         </tr>
                         {{/each}}
 
