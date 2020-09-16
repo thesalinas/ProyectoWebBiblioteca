@@ -63,14 +63,18 @@
                 <tbody name="">
                     {{#each contactos}}
                     <tr>
-                        <td>{{this.direccion.stringValue}}</td>
-                        <td>{{this.telefono.stringValue}}</td>
-                        <td>{{this.conmutador.stringValue}}</td>
-                        <td>{{this.extencion.stringValue}}</td>
-                        <td>{{this.jefe.stringValue}}</td>
-                        <td>{{this.correojefe.stringValue}}</td>
-                        <td>{{this.secre.stringValue}}</td>
-                        <td>{{this.correosecre.stringValue}}</td>
+                        <td>{{direccion}}</td>
+                        <td>{{telefono}}</td>
+                        <td>{{conmutador}}</td>
+                        <td>{{extencion}}</td>
+                        <td>{{jefe}}</td>
+                        <td>{{correojefe}}</td>
+                        <td>{{secre}}</td>
+                        <td>{{correosecre}}</td>
+                        <td>
+                            <button onclick="" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                            <button onclick="" class="btn btn-info"><i class="far fa-edit"></i></button>
+                        </td>
 
                     </tr>
                     {{/each}}

@@ -54,8 +54,20 @@ controlador.guardarcontacto = (req, res) => {
 
 controlador.leercontacto = async(req, res) => {
     const contactos= [];
+
+    await db.collection("contacto").get({    
+    })
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                contactos.push(doc.data());
+            });
+            res.render('./ModuloContacto',{contactos:contactos})
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
     
-    await db.collection("contacto").get()
+    /*await db.collection("contacto").get()
     .then((querySnapshot) => {
         querySnapshot._snapshot.docChanges.map((value)=> {
             console.log(value.doc.objectValue.proto.mapValue);
@@ -64,7 +76,7 @@ controlador.leercontacto = async(req, res) => {
     })  
     ;
     console.log(contactos,"R");
-    res.render('./ModuloContacto',{contactos})
+    res.render('./ModuloContacto',{contactos})*/
 }
 
 
