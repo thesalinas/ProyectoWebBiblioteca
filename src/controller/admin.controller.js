@@ -22,10 +22,34 @@ controlador.ModuloNoticia = (req, res) => {
     res.render('./ModuloNoticia')
 }
 controlador.ModuloContacto = (req, res) => {
-    res.render('./ModuloContacto')
+    //res.render('./ModuloContacto')
+    const contactos= [];
+    db.collection("contacto").get({    
+    })
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                contactos.push(doc.data());
+            });
+            res.render('./ModuloContacto',{contactos:contactos})
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
 }
 controlador.ModuloInfoOrganizacional = (req, res) => {
-    res.render('./ModuloInfoOrganizacional')
+    //res.render('./ModuloInfoOrganizacional')
+    const infoorganizacional= [];
+    db.collection("InfoOrganizacional").get({
+    })
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc)=> {
+            infoorganizacional.push(doc.data());
+        });
+        res.render('./ModuloInfoOrganizacional',{infoorganizacional})     
+    })  
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
 }
 controlador.guardarcontacto = (req, res) => {
     console.log(req.body);
@@ -52,10 +76,9 @@ controlador.guardarcontacto = (req, res) => {
 }
 
 
-controlador.leercontacto = async(req, res) => {
+controlador.leercontacto = (req, res) => {
     const contactos= [];
-
-    await db.collection("contacto").get({    
+    db.collection("contacto").get({    
     })
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -66,7 +89,6 @@ controlador.leercontacto = async(req, res) => {
         .catch((error) => {
             console.error("Error: ", error);
         });
-    
     /*await db.collection("contacto").get()
     .then((querySnapshot) => {
         querySnapshot._snapshot.docChanges.map((value)=> {
@@ -141,19 +163,19 @@ controlador.guardarInfo = (req, res) => {
         });
     res.render('./ModuloInfoOrganizacional')
 }
-controlador.leerinfoorganizacional = async(req, res) => {
+controlador.leerinfoorganizacional = (req, res) => {
     const infoorganizacional= [];
-    
-    await db.collection("InfoOrganizacional").get()
+    db.collection("InfoOrganizacional").get({
+    })
     .then((querySnapshot) => {
-        querySnapshot._snapshot.docChanges.map((value)=> {
-            console.log(value.doc.objectValue.proto.mapValue);
-            infoorganizacional.push(value.doc.objectValue.proto.mapValue.fields);
-        })     
+        querySnapshot.forEach((doc)=> {
+            infoorganizacional.push(doc.data());
+        });
+        res.render('./ModuloInfoOrganizacional',{infoorganizacional})     
     })  
-    ;
-    console.log(infoorganizacional,"R");
-    res.render('./ModuloInfoOrganizacional',{infoorganizacional})
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
 }
 
 controlador.guardarNoticia = (req, res) => {

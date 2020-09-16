@@ -27,7 +27,6 @@
                         <input type="file" class="form-control-file" name="organigrama">
 
                         <button name="btnAgregarinfo" class="btn btn-primary">Agregar Informacion</button>
-                        <button name="btnActualizarinfo" class="btn btn-warning">Actualizar Informacion</button>
 
                     </form>
 
@@ -54,10 +53,14 @@
                     <tbody id="">
                         {{#each infoorganizacional}}
                         <tr>
-                            <td>{{this.mision.stringValue}}</td>
-                            <td>{{this.vision.stringValue}}</td>
-                            <td>{{this.objetivos.stringValue}}</td>
-                            <td>{{this.organigrama.stringValue}}</td>
+                            <td>{{mision}}</td>
+                            <td>{{vision}}</td>
+                            <td>{{objetivos}}</td>
+                            <td>{{organigrama}}</td>
+                            <td>
+                            <button onclick="" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                            <button onclick="" class="btn btn-info"><i class="far fa-edit"></i></button>
+                            </td>
                         </tr>
                         {{/each}}
                     </tbody>
