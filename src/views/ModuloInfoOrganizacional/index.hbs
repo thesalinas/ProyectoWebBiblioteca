@@ -36,33 +36,34 @@
 
         </div>
     </div>
-</section>
-<div class="container">
-    <div class="col">
-        <h2>Informacion organizacional</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Mision</th>
-                        <th scope="col">Vision</th>
-                        <th scope="col">Objetivos</th>
-                        <th scope="col">Organigrama</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody id="">
-                    {{#each infoorganizacional}}
-                    <tr>
-                        <td>{{this.mision.stringValue}}</td>
-                        <td>{{this.vision.stringValue}}</td>
-                        <td>{{this.objetivos.stringValue}}</td>
-                        <td>{{this.organigrama.stringValue}}</td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            
+
+    <div class="container">
+        <div class="col">
+            <h2>Informacion organizacional</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mision</th>
+                            <th scope="col">Vision</th>
+                            <th scope="col">Objetivos</th>
+                            <th scope="col">Organigrama</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="">
+                        {{#each infoorganizacional}}
+                        <tr>
+                            <td>{{this.mision.stringValue}}</td>
+                            <td>{{this.vision.stringValue}}</td>
+                            <td>{{this.objetivos.stringValue}}</td>
+                            <td>{{this.organigrama.stringValue}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
-</div>
+</section>

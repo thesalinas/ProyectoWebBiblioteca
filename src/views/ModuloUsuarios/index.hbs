@@ -5,12 +5,12 @@
         <h2>Bienvenido al Modulo de Gestion de Usuarios</h2>
     </div>
     {{> admin}}
-    <section class="info">
+    <section class="info_usuarios">
         <div class="mi-flex row">
             <div id="Noticia" class="container">
                 <h2>Agregar Usuarios</h2>
 
-                <form class="form" method="POST" action="/registrarUsuarioAdmin">
+                <form class="form" name="" method="POST" action="/registrarUsuarioAdmin">
                     <div class="col">
                         <input class="d-none" type="text" name="id">
 
@@ -30,48 +30,47 @@
                             <option value="Docente">Docente</option>
                         </select>
                     </div>
-                    <button name="btnRegistrarse" class="btn btn-primary">Agregar Usuario</button>
-
+                    <button name="btnRegistrarse" id="agregarusuario" class="btn btn-primary">Agregar Usuario</button>
                 </form>
             </div>
         </div>
-    </section>
 
-    <div class="container">
-        <div class="col">
-            <h2>Listado de Usuarios</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Contraseña</th>
-                            <th scope="col">Contraseña2</th>
-                            <th scope="col">Rol</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody name="">
-                        {{#each usuarios}}
-                        <tr>
-                            <td>{{this.Usuario.stringValue}}</td>
-                            <td>{{this.Contrasena.stringValue}}</td>
-                            <td>{{this.Contrasena2.stringValue}}</td>
-                            <td>{{this.rol.stringValue}}</td>
-                            <td>
-                                <button name="Actualizar"  class="btn btn-warning">Actualizar
-                                    Usuario</button>
 
-                            </td>
-                        </tr>
-                        {{/each}}
+        <div class="container">
+            <div class="col">
+                <h2>Listado de Usuarios</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Contraseña</th>
+                                <th scope="col">Contraseña2</th>
+                                <th scope="col">Rol</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody name="">
+                            {{#each usuarios}}
+                            <tr>
+                                <td>{{this.Usuario.stringValue}}</td>
+                                <td>{{this.Contrasena.stringValue}}</td>
+                                <td>{{this.Contrasena2.stringValue}}</td>
+                                <td>{{this.rol.stringValue}}</td>
+                                <td>
+                                    <button name="Actualizar" class="btn btn-warning">Actualizar
+                                        Usuario</button>
 
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
+    </section>
 </body>
 
 </html>

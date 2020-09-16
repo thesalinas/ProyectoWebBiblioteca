@@ -5,74 +5,67 @@
 </div>
 {{> admin}}
 
-<section class="info">
-    <div class="mi-flex row">
-        <div id="Noticia" class="container">
-            <h2>Agregar Noticia</h2>
-            <div class="row mb-3">
-                <form class="form" method="POST" action="/guardarNoticia">
-                    <!--<input class="d-none" type="text" name="id">-->
+<section class="info-noticias">
 
-                    <label for="">Titulo Noticia</label>
-                    <input class="form-control" type="text" name="titulo">
+    <div id="Noticia" class="container">
+        <h2>Agregar Noticia</h2>
+        <div id="noticia"  class=" row mb-3">
+            <form class="form" method="POST" action="/guardarNoticia">
+                <!--<input class="d-none" type="text" name="id">-->
 
-                    <label for="">Descripcion</label>
-                    <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                <label for="">Titulo Noticia</label>
+                <input class="form-control" type="text" name="titulo">
 
-                    <label for="exampleFormControlFile1">Autor</label>
-                     <input class="form-control" type="text" name="Autor">
+                <label for="">Descripcion</label>
+                <textarea class="form-control" name="descripcion" rows="3"></textarea>
 
-
-                    <label for="exampleFormControlFile1">Imagen Noticia</label>
-                    <input type="file" class="form-control-file" name="imagen">
-
-                    <label for="exampleFormControlFile1">Fecha publicacion</label>
-                    <input type="date" name="fecha">
+                <label for="exampleFormControlFile1">Autor</label>
+                <input class="form-control" type="text" name="Autor">
 
 
+                <label for="exampleFormControlFile1">Imagen Noticia</label>
+                <input type="file" class="form-control-file" name="imagen">
 
-                    <button name="btnAgregar" class="btn btn-primary">Agregar Noticia</button>
-                 
-                </form>
-   
-            </div>
+                <label for="exampleFormControlFile1">Fecha publicacion</label>
+                <input type="date" name="fecha">
 
-
+                <button name="btnAgregar" class="btn btn-primary">Agregar Noticia</button>
+            </form>
         </div>
+    </div>
 
+    <div class="container">
+        <div class="col">
+            <h2>Listado de Noticias</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">fecha_pub</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody name="">
+                        {{#each noticias}}
+                        <tr>
+                            <td>{{this.Titulo.stringValue}}</td>
+                            <td>{{this.Descripcion.stringValue}}</td>
+                            <td>{{this.autor.stringValue}}</td>
+                            <td>{{this.fecha_pub.stringValue}}</td>
+                            <td>{{this.imagen.stringValue}}</td>
+                            <td>
+                                <button name="btnActualizar" class="btn btn-warning">Actualizar Noticia</button>
+                            </td>
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
-<div class="container">
-    <div class="col">
-        <h2>Listado de Noticias</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Titulo</th>
-                        <th scope="col">Descripcion</th>
-                         <th scope="col">Autor</th>
-                         <th scope="col">fecha_pub</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody name="">
-                    {{#each noticias}}
-                    <tr>
-                        <td>{{this.Titulo.stringValue}}</td>
-                        <td>{{this.Descripcion.stringValue}}</td>   
-                        <td>{{this.autor.stringValue}}</td>
-                        <td>{{this.fecha_pub.stringValue}}</td>
-                        <td>{{this.imagen.stringValue}}</td>
-                        <td>
-                            <button name="btnActualizar" class="btn btn-warning">Actualizar Noticia</button>
-                        </td>
-                    </tr>
-                    {{/each}}
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
