@@ -16,10 +16,34 @@ controlador.Registrarse = (req, res) => {
     res.render('./Registrarse')
 }
 controlador.ModuloUsuarios = (req, res) => {
-    res.render('./ModuloUsuarios')
+    //res.render('./ModuloUsuarios')
+    const usuarios= [];
+    db.collection("Usuarios").get({
+    })
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc)=> {
+            usuarios.push(doc.data());
+        }) ;   
+        res.render('./ModuloUsuarios',{usuarios})
+    })  
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
 }
 controlador.ModuloNoticia = (req, res) => {
-    res.render('./ModuloNoticia')
+    //res.render('./ModuloNoticia')
+    const noticias= [];
+    db.collection("Noticias").get()({
+    })
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc)=> {
+            noticias.push(doc.data());
+        }) ;   
+        res.render('./ModuloNoticia',{noticias})
+    })  
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
 }
 controlador.ModuloContacto = (req, res) => {
     //res.render('./ModuloContacto')
@@ -201,20 +225,20 @@ controlador.guardarNoticia = (req, res) => {
     res.render('./ModuloNoticia')
 }
 
-controlador.leernoticia = async(req, res) => {
+controlador.leernoticia = (req, res) => {
     const noticias= [];
-    
-    await db.collection("Noticias").get()
+    db.collection("Noticias").get({
+    })
     .then((querySnapshot) => {
-        querySnapshot._snapshot.docChanges.map((value)=> {
-            console.log(value.doc.objectValue.proto.mapValue);
-            noticias.push(value.doc.objectValue.proto.mapValue.fields);
-        })     
+        querySnapshot.forEach((doc)=> {
+            noticias.push(doc.data());
+        }) ;   
+        res.render('./ModuloNoticia',{noticias})
     })  
-    ;
-    
-    console.log(noticias,"R");
-    res.render('./ModuloNoticia',{noticias})
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+   
 }
 
 
@@ -263,19 +287,19 @@ controlador.registrarUsuarioAdmi = (req, res) => {
 }
 
 
-controlador.leerUsuarios = async(req, res) => {
+controlador.leerUsuarios = (req, res) => {
     const usuarios= [];
-    
-    await db.collection("Usuarios").get()
+    db.collection("Usuarios").get({
+    })
     .then((querySnapshot) => {
-        querySnapshot._snapshot.docChanges.map((value)=> {
-            console.log(value.doc.objectValue.proto.mapValue);
-            usuarios.push(value.doc.objectValue.proto.mapValue.fields);
-        })     
+        querySnapshot.forEach((doc)=> {
+            usuarios.push(doc.data());
+        }) ;   
+        res.render('./ModuloUsuarios',{usuarios})
     })  
-    ;
-    console.log(usuarios,"R");
-    res.render('./ModuloUsuarios',{usuarios})
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
 }
 
 
