@@ -1,1 +1,21 @@
 {{>header}}
+
+{{#each noticias}}
+<section class="col" id="tnoticias">
+  <div class="img-noticia">
+    <img src="{{imagen}}" class="card-img-top" alt="">
+  </div>
+  <div class="til-noticias text-center">
+    <h4>{{Titulo}}</h4>
+  </div>
+  <div class="des-noticia text-justify">
+    <a class="noti">{{Descripcion}}</a>
+  </div>
+  <div>
+    <p href=""> Fecha de publicacion: {{fecha_pub}}</p>
+    <p>Autor: {{autor}}</p>
+  </div>
+</section>
+{{/each}}
+
+{{>footer}}

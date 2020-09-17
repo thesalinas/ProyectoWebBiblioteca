@@ -3,27 +3,28 @@
 <div class="banner text-center">
   <h2>Informacion Organizacional</h2>
 </div>
-
 {{#each infoorganizacional}}
 <div class="til-misi text-center">
   <h1 class="mision">Misión</h1>
-  <div class="tex-mision text-justify">
-    <p>{{mision}}</p>
-  </div>
-  <div class="til-visi text-center">
-    <h1 class="vision">Visión</h1>
-  </div>
-  <div class="tex-vision text-justify">
-    <p>{{vision}} </p>
-  </div>
-  <div class="til-obj text-center">
-    <h1 class="objetivos">Objetivos</h1>
-  </div>
-  <div class="tex-obj text-justify">
-    <p>{{objetivos}}</p>
-  </div>
-  <div class="til-orga text-center">
-    <p>{{organigrama}}</p>
-  </div>
 </div>
-{{#each}}
+<div class="tex-mision text-justify">
+  <p>{{mision}} </p>
+</div>
+<div class="til-visi text-center">
+  <h1 class="vision">Visión</h1>
+</div>
+<div class="tex-vision text-justify">
+  <p>{{vision}} </p>
+</div>
+<div class="til-obj text-center">
+  <h1 class="objetivos">Objetivos</h1>
+</div>
+<div class="tex-obj text-justify">
+  <p>{{objetivos}} </p>
+</div>
+<div class="til-orga text-center">
+  <p>{{organigrama}}</p>
+</div>
+{{/each}}
+
+{{>footer}}

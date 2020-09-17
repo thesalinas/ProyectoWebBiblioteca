@@ -40,16 +40,18 @@ controlador.nosotros = (req, res) => {
 }
 
 
+
 controlador.confooter = (req, res) => {
     //res.render('index');
-    const noticias= [];
+    const contactos= [];
     db.collection("contacto").get({
     })
     .then((querySnapshot) => {
         querySnapshot.forEach((doc)=> {
-            noticias.push(doc.data());
+            contactos.push(doc.data());
         }) ;   
-        res.render('./',{contactos})
+        //res.render('./layouts/partials/footer.hbs' , {contactos})
+        res.render('./MostrarContacto',{contactos})
     })  
     .catch((error) => {
         console.error("Error: ", error);
@@ -57,6 +59,24 @@ controlador.confooter = (req, res) => {
 
 }
 
+
+controlador.mostrartnoticias = (req, res) => {
+    //res.render('index');
+    const noticias= [];
+    db.collection("Noticias").get({
+    })
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc)=> {
+            noticias.push(doc.data());
+        }) ;   
+        //res.render('./layouts/partials/footer.hbs' , {contactos})
+        res.render('./MostrarNoticias',{noticias})
+    })  
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+
+}
 
 controlador.mostrarcontacto = (req, res) => {
     res.render('./MostrarContacto')
@@ -241,6 +261,7 @@ controlador.guardarInfo = (req, res) => {
         });
     res.render('./ModuloInfoOrganizacional')
 }
+
 controlador.leerinfoorganizacional = (req, res) => {
     const infoorganizacional= [];
     db.collection("InfoOrganizacional").get({
@@ -322,10 +343,8 @@ controlador.registrarUsuarioAdmi = (req, res) => {
     console.log(req.body);
 
     db.collection("Usuarios").add({
-        Usuario:req.body.nombre,
+        Usuario:req.body.nom,
         Contrasena: req.body.contrasena,
-        Contrasena2: req.body.contrasena2,
-        Rol: req.body.rols,  
             })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);

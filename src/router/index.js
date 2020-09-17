@@ -6,6 +6,9 @@ const controlador = require('../controller/Admin.controller');
 router.get('/', controlador.inicio);
 router.post('/', controlador.inicio);
 router.get('/mostrarinformacionorganizacional', controlador.nosotros);
+router.get('/mostrarcontacto', controlador.confooter);
+router.get('/mostrarnoticias', controlador.mostrartnoticias);
+
 
 router.get('/admin', controlador.admin);
 router.get('/contacto', controlador.ModuloContacto);
