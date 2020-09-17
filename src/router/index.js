@@ -5,12 +5,16 @@ const controlador = require('../controller/Admin.controller');
 
 router.get('/', controlador.inicio);
 router.post('/', controlador.inicio);
+router.get('/mostrarinformacionorganizacional', controlador.nosotros);
 
 router.get('/admin', controlador.admin);
 router.get('/contacto', controlador.ModuloContacto);
 router.get('/noticia', controlador.ModuloNoticia);
 router.get('/Login', controlador.Login);
 router.get('/Registrarse', controlador.Registrarse);
+router.get('/mostrarcontacto', controlador.mostrarcontacto);
+router.get('/mostrarinformacionorganizacional', controlador.mostrarinformacionorganizacional);
+router.get('/mostrarnoticias', controlador.mostrarnoticias);
 router.get('/usuarios', controlador.ModuloUsuarios);
 router.get('/informacion', controlador.ModuloInfoOrganizacional);
 router.post('/guardarcontacto', controlador.guardarcontacto);

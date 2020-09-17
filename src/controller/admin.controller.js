@@ -21,6 +21,55 @@ controlador.inicio = (req, res) => {
     });
 
 }
+
+controlador.nosotros = (req, res) => {
+    //res.render('index');
+    const infoorganizacional= [];
+    db.collection("InfoOrganizacional").get({
+    })
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc)=> {
+            infoorganizacional.push(doc.data());
+        }) ;   
+        res.render('./Mostrarinfo',{infoorganizacional})
+    })  
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+
+}
+
+
+controlador.confooter = (req, res) => {
+    //res.render('index');
+    const noticias= [];
+    db.collection("contacto").get({
+    })
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc)=> {
+            noticias.push(doc.data());
+        }) ;   
+        res.render('./',{contactos})
+    })  
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+
+}
+
+
+controlador.mostrarcontacto = (req, res) => {
+    res.render('./MostrarContacto')
+}
+
+controlador.mostrarnoticias = (req, res) => {
+    res.render('./MostrarNoticias')
+}
+
+controlador.mostrarinformacionorganizacional = (req, res) => {
+    res.render('./Mostrarinfo')
+}
+
 controlador.admin = (req, res) => {
     res.render('./admin')
 }
@@ -145,21 +194,6 @@ controlador.leercontacto = (req, res) => {
     res.render('./ModuloContacto',{contactos})*/
 }
 
-
-controlador.leercontactoinicio = async(req, res) => {
-    const contactos= [];
-    
-    await db.collection("contacto").get()
-    .then((querySnapshot) => {
-        querySnapshot._snapshot.docChanges.map((value)=> {
-            console.log(value.doc.objectValue.proto.mapValue);
-            contactos.push(value.doc.objectValue.proto.mapValue.fields);
-        })     
-    })  
-    ;
-    console.log(contactos,"R");
-    res.render('./ModuloInfoOrganizacional',{contactos})
-}
 
 
 controlador.actualizarContacto = (req, res) => {
@@ -334,17 +368,18 @@ controlador.registrofirebase = (req, res) => {
         });
 }
 
-controlador.logeado = (req, res) => {
-   
+controlador.logeado = (req, res) => {   
     firebase.auth().signInWithEmailAndPassword(req.body.nomm, req.body.conn)
         .then((user) => {
             //sessionStorage.setItem('login', user.email);
-            res.render('./admin')
+            res.render('./admin', user)
         })
         .catch(function (error) {
             console.log("Error: ", error.message);
         });
 }
+
+
 controlador.cerrarsesion = (req, res) => {
     firebase.auth().signOut()
         .then(() => {
