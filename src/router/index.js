@@ -5,7 +5,7 @@ const controlador = require('../controller/Admin.controller');
 
 router.get('/', controlador.inicio);
 router.post('/', controlador.inicio);
-router.get('/', controlador.leercontactoinicio);
+
 router.get('/admin', controlador.admin);
 router.get('/contacto', controlador.ModuloContacto);
 router.get('/noticia', controlador.ModuloNoticia);
@@ -25,4 +25,10 @@ router.post('/registrarUsuario', controlador.registrarUsuario);
 
 router.get('/registrarUsuarioAdmi', controlador.leerUsuarios);
 router.post('/registrarUsuarioAdmi', controlador.registrarUsuarioAdmi);
+
+router.get('/registrofirebase',controlador.MostrarNoticia);
+router.post('/regis', controlador.registrofirebase);
+router.post('/loge', controlador.logeado);
+
+
 module.exports = router;

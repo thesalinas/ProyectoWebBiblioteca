@@ -2,9 +2,24 @@ const { firebase } = require('../configFirebase');
 
 const controlador = {};
 const db = firebase.firestore();
+const auth= firebase.auth();
+
 
 controlador.inicio = (req, res) => {
-    res.render('index');
+    //res.render('index');
+    const noticias= [];
+    db.collection("Noticias").get({
+    })
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc)=> {
+            noticias.push(doc.data());
+        }) ;   
+        res.render('./',{noticias})
+    })  
+    .catch((error) => {
+        console.error("Error: ", error);
+    });
+
 }
 controlador.admin = (req, res) => {
     res.render('./admin')
@@ -33,7 +48,7 @@ controlador.ModuloUsuarios = (req, res) => {
 controlador.ModuloNoticia = (req, res) => {
     //res.render('./ModuloNoticia')
     const noticias= [];
-    db.collection("Noticias").get()({
+    db.collection("Noticias").get({
     })
     .then((querySnapshot) => {
         querySnapshot.forEach((doc)=> {
@@ -74,6 +89,11 @@ controlador.ModuloInfoOrganizacional = (req, res) => {
     .catch((error) => {
         console.error("Error: ", error);
     });
+}
+
+controlador.MostrarNoticia = (req, res) => {
+    res.render('./MostrarNoticia')
+
 }
 controlador.guardarcontacto = (req, res) => {
     console.log(req.body);
@@ -302,8 +322,50 @@ controlador.leerUsuarios = (req, res) => {
     });
 }
 
+controlador.registrofirebase = (req, res) => {
+    
+    firebase.auth().createUserWithEmailAndPassword(req.body.nom, req.body.con)
+        .then(() => {
+            console.log("El usuario se ha registrado");
+            res.render('./Login')
+        })
+        .catch(function (error) {
+            console.log("Error: ", error.message);
+        });
+}
+
+controlador.logeado = (req, res) => {
+   
+    firebase.auth().signInWithEmailAndPassword(req.body.nomm, req.body.conn)
+        .then((user) => {
+            //sessionStorage.setItem('login', user.email);
+            res.render('./admin')
+        })
+        .catch(function (error) {
+            console.log("Error: ", error.message);
+        });
+}
+controlador.cerrarsesion = (req, res) => {
+    firebase.auth().signOut()
+        .then(() => {
+            console.log("Sesion cerrada exitosamente");
+            res.render('./Login')
+        }).catch((error) => {
+            console.log(error.message)
+        });
+}
 
 
+function estado() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            console.log('usuario logeado');
+        }
+        else {
+            console.log('usuario no logeado');
+        }
+    });
+}
 
 
 module.exports = controlador;
