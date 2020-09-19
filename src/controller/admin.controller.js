@@ -589,11 +589,12 @@ controlador.registrofirebase = (req, res) => {
 controlador.logeado = (req, res) => {
     firebase.auth().signInWithEmailAndPassword(req.body.nomm, req.body.conn)
         .then((user) => {
-            //sessionStorage.setItem('login', user.email);
+            console.log("Sesion exitosamente");
             res.render('./admin', user)
         })
         .catch(function (error) {
             console.log("Error: ", error.message);
+            res.render('./Login', user)
         });
 }
 

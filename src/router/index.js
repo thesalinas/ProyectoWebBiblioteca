@@ -53,4 +53,6 @@ router.get('/editNoticia/:id', controlador.editNoticia);
 router.post('/ActualizarContacto',controlador.ActualizarContacto);
 router.post('/ActualizarNoticia',controlador.ActualizarNoticia);
 
+
+//router.post('/cerrarsesion',controlador.cerrarsesion);
 module.exports = router;

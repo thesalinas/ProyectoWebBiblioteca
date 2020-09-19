@@ -1,34 +1,25 @@
 
-
-<div class="container text-center">
-    <div class="col">
-        <div class="row ">
-            <fieldset>
-                <div class="encabezado">
-                    <h1>Sistema Bibliotecario: Registro</h1>
-                </div>
-                <form method="POST" action="/registrarUsuario">
-                    <h2>Correo Electronico</h2>
-                    <input type="email" name="nom"  placeholder="Ingresar Correo Electronico" /><br />
-                    <h2>Contraseña</h2>
-                    <input type="password" name="con" 
-                        placeholder="Ingresar Contraseña" /><br />
-
-                    <button name="btnRegistrarUsuario" class="btn btn-primary">Registrar</button>
-                </form>
-                <div class="olvido">
-                    <a href="vistas/recuperar.html">¿Olvidó su nombre de usuario? </a>
-                    <br>
-                    <a href="vistas/recuperar.html">¿Olvidó su contraseña?</a>
-                    <br>
-                    <a href="vistas/registrarse.html">¿Registrarse? </a>
-                    <br>
-                    <a href="vistas/ayuda.html">¿Necesitas ayuda?</a>
-                </div>
-            </fieldset>
+<body background="../imagenes/U_login.jpg">
+<div class="login">
+    <fieldset>
+        <div class="encabezado">
+            <h1>Sistema Bibliotecario: Registro</h1>
         </div>
+        <form method="POST" action="/registrarUsuario">
+            <h2>Correo Electronico</h2>
+            <input type="email" name="nom" placeholder="Ingresar Correo Electronico" /><br />
+            <h2>Contraseña</h2>
+            <input type="password" name="con" placeholder="Ingresar Contraseña" /><br />
 
-
-    </div>
-
+            <button name="btnRegistrarUsuario" class="btn btn-primary">Registrar</button>
+        </form>
+        <div class="olvido">
+            <a href="/">Inicio</a>
+            <br>
+            <a href="/Registrarse">¿Registrarse? </a>
+            <br>
+            
+        </div>
+    </fieldset>
 </div>
+</body>
