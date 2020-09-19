@@ -22,6 +22,7 @@ controlador.inicio = (req, res) => {
 
 }
 
+
 controlador.nosotros = (req, res) => {
     //res.render('index');
     const infoorganizacional = [];
@@ -38,7 +39,6 @@ controlador.nosotros = (req, res) => {
         });
 
 }
-
 
 
 controlador.confooter = (req, res) => {
@@ -589,11 +589,12 @@ controlador.registrofirebase = (req, res) => {
 controlador.logeado = (req, res) => {
     firebase.auth().signInWithEmailAndPassword(req.body.nomm, req.body.conn)
         .then((user) => {
-            //sessionStorage.setItem('login', user.email);
+            console.log("Sesion exitosamente");
             res.render('./admin', user)
         })
         .catch(function (error) {
             console.log("Error: ", error.message);
+            res.render('./Login', user)
         });
 }
 
