@@ -136,7 +136,28 @@ controlador.ModuloContacto = (req, res) => {
     })
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                contactos.push(doc.data());
+                console.log(doc.id,  "id");
+                let id = doc.id;
+                let direccion= doc.data().direccion;
+                let telefono=doc.data().telefono;
+                let extencion=doc.data().extencion;
+                let jefe=doc.data().jefe;
+                let correojefe=doc.data().correojefe;
+                let secre=doc.data().secre;
+                let correosecre=doc.data().correosecre;
+                contacto = {
+                    id: id,
+                    direccion: direccion,
+                    telefono: telefono,
+                    extencion: extencion,
+                    jefe:jefe,
+                    correojefe:correojefe,
+                    secre:secre,
+                    correosecre:correosecre
+                }
+                
+                contactos.push(contacto);
+                console.log(contactos,  "contacto");
             });
             res.render('./ModuloContacto',{contactos:contactos})
         })
@@ -144,6 +165,8 @@ controlador.ModuloContacto = (req, res) => {
             console.error("Error: ", error);
         });
 }
+
+
 controlador.ModuloInfoOrganizacional = (req, res) => {
     //res.render('./ModuloInfoOrganizacional')
     const infoorganizacional= [];
@@ -185,7 +208,7 @@ controlador.guardarcontacto = (req, res) => {
         });
 
 
-    res.render('./contacto')
+    res.render('./ModuloContacto')
 }
 
 
@@ -195,26 +218,55 @@ controlador.leercontacto = (req, res) => {
     })
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                contactos.push(doc.data());
+                console.log(doc.id,  "id");
+                let id = doc.id;
+                let direccion= doc.data().direccion;
+                let telefono=doc.data().telefono;
+                let extencion=doc.data().extencion;
+                let jefe=doc.data().jefe;
+                let correojefe=doc.data().correojefe;
+                let secre=doc.data().secre;
+                let correosecre=doc.data().correosecre;
+                contacto = {
+                    id: id,
+                    direccion: direccion,
+                    telefono: telefono,
+                    extencion: extencion,
+                    jefe:jefe,
+                    correojefe:correojefe,
+                    secre:secre,
+                    correosecre:correosecre
+                }
+                
+                contactos.push(contacto);
+                console.log(contactos,  "contacto");
             });
             res.render('./ModuloContacto',{contactos:contactos})
         })
         .catch((error) => {
             console.error("Error: ", error);
         });
-    /*await db.collection("contacto").get()
-    .then((querySnapshot) => {
-        querySnapshot._snapshot.docChanges.map((value)=> {
-            console.log(value.doc.objectValue.proto.mapValue);
-            contactos.push(value.doc.objectValue.proto.mapValue.fields);
-        })     
-    })  
-    ;
-    console.log(contactos,"R");
-    res.render('./ModuloContacto',{contactos})*/
 }
 
+controlador.editarcon = (req, res) => {
+    console.log(req.params.id, "id");
+    db.collection("contacto").doc(req.params.id).get()
+    .then((doc) => {
+        req.body.idcon = req.params.id,
+        req.body.txtdire = doc.data().direccion,
+        req.body.txttele = doc.data().telefono,
+        req.body.txtconmu= doc.data().conmutador,
+        req.body.txtext= doc.data().extencion,
+        req.body.txtjefe= doc.data().jefe,
+        req.body.txtcorrjefe= doc.data().correojefe,
+        req.body.txtsecre= doc.data().secre,
+        req.body.txtcorrsecre= doc.data().correosecre
 
+    })
+    .catch((error) => {
+        console.log("Error: ", error);
+    });
+}
 
 controlador.actualizarContacto = (req, res) => {
     console.log(req.body);

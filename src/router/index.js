@@ -1,6 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 
+const { firebase } = require('../configFirebase');
+
+
+const db = firebase.firestore();
+
 const controlador = require('../controller/Admin.controller');
 
 router.get('/', controlador.inicio);
@@ -27,15 +32,25 @@ router.get('/guardarInfo', controlador.leerinfoorganizacional);
 router.post('/guardarNoticia', controlador.guardarNoticia);
 router.get('/guardarNoticia', controlador.leernoticia);
 
+router.get('/rta/:id', controlador.editarcon);
 
 router.post('/registrarUsuario', controlador.registrarUsuario);
 
 router.get('/registrarUsuarioAdmi', controlador.leerUsuarios);
 router.post('/registrarUsuarioAdmi', controlador.registrarUsuarioAdmi);
 
-router.get('/registrofirebase',controlador.MostrarNoticia);
+router.get('/registrofirebase', controlador.MostrarNoticia);
 router.post('/regis', controlador.registrofirebase);
 router.post('/loge', controlador.logeado);
 
+router.get('/deleteProduct/:id', (req, res) => {
 
+    console.log(req.params.id);
+    db.collection("contacto").doc(req.params.id).delete()
+        .then(() => {
+            res.redirect('/admin');
+        }).catch((error) => {
+            console.error("Error: ", error);
+        });
+});
 module.exports = router;
