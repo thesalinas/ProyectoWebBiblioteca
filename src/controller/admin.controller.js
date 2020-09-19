@@ -602,7 +602,7 @@ controlador.cerrarsesion = (req, res) => {
     firebase.auth().signOut()
         .then(() => {
             console.log("Sesion cerrada exitosamente");
-            res.render('./Login')
+            res.redirect('./')
         }).catch((error) => {
             console.log(error.message)
         });

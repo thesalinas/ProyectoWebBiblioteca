@@ -31,33 +31,35 @@
 
     <section class="servicios">
         <div class="container">
-            <div class="row">
+            <div class="row text-center">
                 <div class="col-md-10 text-center">
                     <i class="fas fa-concierge-bell fa-4x"></i>
-                    <h2>Ultimas Noticias</h2>
-                    {{#each noticias}}
-                    <div class="card text-center " style="width: 20rem;">
-                        <img src="{{imagen}}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <h5>{{Titulo}}</h5>
-                            <div class="texto-noticia">
-                                <p class="des-noti">{{Descripcion}}</p>
-                                <a href="vistas/Noticiaindividual.html" class="btn btn-success">Ir a noticia</a>
+                    <h2 class="text-center">Ultimas Noticias</h2>
+                    <div class="row text-center">
+                        {{#each noticias}}
+                        <div class="row card text-center" style="width: 20rem;">
+                            <img src="{{imagen}}" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h5>{{Titulo}}</h5>
+                                <div class="texto-noticia">
+                                    <p class="des-noti">{{Descripcion}}</p>
+                                    <a href="vistas/Noticiaindividual.html" class="btn btn-success">Ir a noticia</a>
+                                </div>
                             </div>
                         </div>
                         {{/each}}
-
-
                     </div>
+
                 </div>
             </div>
-            <div class="todas-noticias text-center">
-                <button type="button" class="boton-noticias btn btn-success" onclick="noticias()">Ver todas las
-                    Noticias</button>
+        </div>
+        <div class="todas-noticias text-center">
+            <button type="button" class="boton-noticias btn btn-success" onclick="noticias()">Ver todas las
+                Noticias</button>
 
-            </div>
+        </div>
 
     </section>
 
-{{>footer}}
-  </body>
+    {{>footer}}
+</body>
