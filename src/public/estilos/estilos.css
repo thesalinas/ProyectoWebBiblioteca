@@ -241,9 +241,20 @@ button {
   color: black;
 }
 
+#con_noti{
+  
+}
+
+
 
 .noti{
   text-align: justify;
+}
+
+.texto-noticia{
+  white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
 }
 
 
@@ -263,7 +274,7 @@ button {
 }
 
 
-.container{
+.container_noticias{
   margin-left:  150px;
 
 }
