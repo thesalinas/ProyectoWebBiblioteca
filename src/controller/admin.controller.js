@@ -121,9 +121,26 @@ controlador.ModuloNoticia = (req, res) => {
     })
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                noticias.push(doc.data());
+                console.log(doc.id, "id");
+                let id = doc.id;
+                let Titulo = doc.data().Titulo;
+                let Descripcion = doc.data().Descripcion;
+                let imagen = doc.data().imagen;
+                let autor = doc.data().autor;
+                let fecha_pub = doc.data().fecha_pub;
+                noticia = {
+                    id: id,
+                    Titulo: Titulo,
+                    Descripcion: Descripcion,
+                    imagen: imagen,
+                    autor: autor,
+                    fecha_pub: fecha_pub,
+                }
+
+                noticias.push(noticia);
+
             });
-            res.render('./ModuloNoticia', { noticias })
+            res.render('./ModuloNoticia', { noticias: noticias })
         })
         .catch((error) => {
             console.error("Error: ", error);
@@ -140,7 +157,7 @@ controlador.ModuloContacto = (req, res) => {
                 let id = doc.id;
                 let direccion = doc.data().direccion;
                 let telefono = doc.data().telefono;
-                let conmutador= doc.data().conmutador;
+                let conmutador = doc.data().conmutador;
                 let extencion = doc.data().extencion;
                 let jefe = doc.data().jefe;
                 let correojefe = doc.data().correojefe;
@@ -150,7 +167,7 @@ controlador.ModuloContacto = (req, res) => {
                     id: id,
                     direccion: direccion,
                     telefono: telefono,
-                    conmutador:conmutador,
+                    conmutador: conmutador,
                     extencion: extencion,
                     jefe: jefe,
                     correojefe: correojefe,
@@ -197,7 +214,7 @@ controlador.ModuloInfoOrganizacional = (req, res) => {
                     organigrama: organigrama,
                 }
                 infoorganizacional.push(informacion);
-                console.log(infoorganizacional, "contacto");
+                
             });
             res.render('./ModuloInfoOrganizacional', { infoorganizacional: infoorganizacional })
         })
@@ -245,7 +262,7 @@ controlador.leercontacto = (req, res) => {
                 let id = doc.id;
                 let direccion = doc.data().direccion;
                 let telefono = doc.data().telefono;
-                let conmutador= doc.data().conmutador;
+                let conmutador = doc.data().conmutador;
                 let extencion = doc.data().extencion;
                 let jefe = doc.data().jefe;
                 let correojefe = doc.data().correojefe;
@@ -255,7 +272,7 @@ controlador.leercontacto = (req, res) => {
                     id: id,
                     direccion: direccion,
                     telefono: telefono,
-                    conmutador:conmutador,
+                    conmutador: conmutador,
                     extencion: extencion,
                     jefe: jefe,
                     correojefe: correojefe,
@@ -281,13 +298,13 @@ controlador.editContacto = (req, res) => {
             var id = doc.id;
             var direccion = doc.data().direccion;
             var telefono = doc.data().telefono;
-            var conmutador= doc.data().conmutador;
+            var conmutador = doc.data().conmutador;
             var extencion = doc.data().extencion;
             var jefe = doc.data().jefe;
             var correojefe = doc.data().correojefe;
             var secre = doc.data().secre;
             var correosecre = doc.data().correosecre;
-            res.render('./ActualizarContacto', { direccion, telefono,conmutador, extencion,jefe,correojefe,secre,correosecre, id });
+            res.render('./ActualizarContacto', { direccion, telefono, conmutador, extencion, jefe, correojefe, secre, correosecre, id });
         })
         .catch(function (error) {
             console.log("error :", error);
@@ -352,7 +369,7 @@ controlador.guardarInfo = (req, res) => {
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
             alert('Datos agregados correctamente', docRef.id);
-            limpiarDatos();
+            
         })
         .catch((error) => {
             console.error("Error: ", error);
@@ -403,7 +420,7 @@ controlador.guardarNoticia = (req, res) => {
         Titulo: req.body.titulo,
         Descripcion: req.body.descripcion,
         imagen: req.body.imagen,
-        autor: req.body.Autor,
+        autor: req.body.autor,
         fecha_pub: req.body.fecha,
     })
         .then((docRef) => {
@@ -420,14 +437,32 @@ controlador.guardarNoticia = (req, res) => {
 }
 
 controlador.leernoticia = (req, res) => {
+
     const noticias = [];
     db.collection("Noticias").get({
     })
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                noticias.push(doc.data());
+                console.log(doc.id, "id");
+                let id = doc.id;
+                let Titulo = doc.data().Titulo;
+                let Descripcion = doc.data().Descripcion;
+                let imagen = doc.data().imagen;
+                let autor = doc.data().autor;
+                let fecha_pub = doc.data().fecha_pub;
+                noticia = {
+                    id: id,
+                    Titulo: Titulo,
+                    Descripcion: Descripcion,
+                    imagen: imagen,
+                    autor: autor,
+                    fecha_pub: fecha_pub,
+                }
+
+                noticias.push(noticia);
+
             });
-            res.render('./ModuloNoticia', { noticias })
+            res.render('./ModuloContacto', { noticias: noticias })
         })
         .catch((error) => {
             console.error("Error: ", error);
@@ -435,8 +470,53 @@ controlador.leernoticia = (req, res) => {
 
 }
 
+controlador.eliminarnoticia = (req, res) => {
+    db.collection("Noticias").doc(req.params.id).delete()
+        .then(() => {
+            res.redirect('/noticia');
+        }).catch((error) => {
+            console.error("Error: ", error);
+        });
 
+}
+controlador.editNoticia = (req, res) => {
+    var id = req.params.id;
+    console.log(id)
+    db.collection("Noticias").doc(id).get()
+        .then((doc) => {
+            var id = doc.id;
+            var titulo = doc.data().Titulo;
+            var descrip = doc.data().Descripcion;
+            var autor = doc.data().autor;
+            var imagen = doc.data().imagen;
+            var fecha_pub = doc.data().fecha_pub;
+            res.render('./ActualizarNoticia', { titulo, descrip, autor, imagen, fecha_pub, id });
+        })
+        .catch(function (error) {
+            console.log("error :", error);
+        })
 
+}
+controlador.ActualizarNoticia = (req, res) => {
+    console.log(req.body);
+
+    db.collection("Noticias").doc(req.body.id).update({
+        Titulo: req.body.titulo,
+        Descripcion: req.body.descripcion,
+        autor: req.body.autor,
+        imagen: req.body.imagen,
+        fecha_pub: req.body.fecha
+    })
+        .then((docRef) => {
+            console.log("Document successfully updated!");
+            req.render('./admin');
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+
+    res.render('./admin')
+}
 controlador.registrarUsuario = (req, res) => {
     console.log(req.body);
 

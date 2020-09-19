@@ -1,0 +1,14 @@
+<form class="form" method="POST" action="/ActualizarNoticia">
+    <input class="d-none" type="text" name="id" value="{{id}}">
+    <label for="">Titulo Noticia</label>
+    <input class="form-control" type="text" name="titulo" value="{{titulo}}">
+    <label for="">Descripcion</label>
+    <textarea class="form-control" name="descripcion" value="{{descrip}}" rows="3"></textarea>
+    <label for="">Autor</label>
+    <input class="form-control" type="text" name="autor" value="{{autor}}" rows="3"></input>
+    <label for="">Fecha publicacion</label>
+    <input type="date" id="start" name="fecha" value="{{fecha_pub}}"></input>
+    <label for="exampleFormControlFile1">Imagen Noticia</label>
+    <input type="file" class="form-control-file" name="imagen" value="{{imagen}}">
+    <button name="btnActualizar" class="btn btn-primary">Actualizar Noticia</button>
+</form>

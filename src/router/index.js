@@ -45,9 +45,12 @@ router.post('/regis', controlador.registrofirebase);
 router.post('/loge', controlador.logeado);
 
 router.get('/deleteContacto/:id', controlador.eliminarcontacto);
+router.get('/deleteNoticia/:id', controlador.eliminarnoticia);
 router.get('/deleteInformacion/:id', controlador.eliminarinfoorganizacional);
 
 router.get('/editContacto/:id', controlador.editContacto);
+router.get('/editNoticia/:id', controlador.editNoticia);
 router.post('/ActualizarContacto',controlador.ActualizarContacto);
+router.post('/ActualizarNoticia',controlador.ActualizarNoticia);
 
 module.exports = router;
