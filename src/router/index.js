@@ -35,12 +35,12 @@ router.get('/guardarNoticia', controlador.leernoticia);
 
 //router.get('/rta/:id', controlador.editarcon);
 
-router.post('/registrarUsuario', controlador.registrarUsuario);
+router.post('/registrarUsuario', controlador.registrofirebase);
 
 router.get('/registrarUsuarioAdmi', controlador.leerUsuarios);
 router.post('/registrarUsuarioAdmi', controlador.registrarUsuarioAdmi);
 
-router.get('/registrofirebase', controlador.MostrarNoticia);
+router.get('/registrofirebase', controlador.registrofirebase);
 router.post('/regis', controlador.registrofirebase);
 router.post('/loge', controlador.logeado);
 
