@@ -2,40 +2,40 @@ const { firebase } = require('../configFirebase');
 
 const controlador = {};
 const db = firebase.firestore();
-const auth= firebase.auth();
+const auth = firebase.auth();
 
 
 controlador.inicio = (req, res) => {
     //res.render('index');
-    const noticias= [];
+    const noticias = [];
     db.collection("Noticias").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            noticias.push(doc.data());
-        }) ;   
-        res.render('./',{noticias})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                noticias.push(doc.data());
+            });
+            res.render('./', { noticias })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
 
 }
 
 controlador.nosotros = (req, res) => {
     //res.render('index');
-    const infoorganizacional= [];
+    const infoorganizacional = [];
     db.collection("InfoOrganizacional").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            infoorganizacional.push(doc.data());
-        }) ;   
-        res.render('./Mostrarinfo',{infoorganizacional})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                infoorganizacional.push(doc.data());
+            });
+            res.render('./Mostrarinfo', { infoorganizacional })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
 
 }
 
@@ -43,38 +43,38 @@ controlador.nosotros = (req, res) => {
 
 controlador.confooter = (req, res) => {
     //res.render('index');
-    const contactos= [];
+    const contactos = [];
     db.collection("contacto").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            contactos.push(doc.data());
-        }) ;   
-        //res.render('./layouts/partials/footer.hbs' , {contactos})
-        res.render('./MostrarContacto',{contactos})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                contactos.push(doc.data());
+            });
+            //res.render('./layouts/partials/footer.hbs' , {contactos})
+            res.render('./MostrarContacto', { contactos })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
 
 }
 
 
 controlador.mostrartnoticias = (req, res) => {
     //res.render('index');
-    const noticias= [];
+    const noticias = [];
     db.collection("Noticias").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            noticias.push(doc.data());
-        }) ;   
-        //res.render('./layouts/partials/footer.hbs' , {contactos})
-        res.render('./MostrarNoticias',{noticias})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                noticias.push(doc.data());
+            });
+            //res.render('./layouts/partials/footer.hbs' , {contactos})
+            res.render('./MostrarNoticias', { noticias })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
 
 }
 
@@ -101,86 +101,106 @@ controlador.Registrarse = (req, res) => {
 }
 controlador.ModuloUsuarios = (req, res) => {
     //res.render('./ModuloUsuarios')
-    const usuarios= [];
+    const usuarios = [];
     db.collection("Usuarios").get({
-    })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            usuarios.push(doc.data());
-        }) ;   
-        res.render('./ModuloUsuarios',{usuarios})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
-}
-controlador.ModuloNoticia = (req, res) => {
-    //res.render('./ModuloNoticia')
-    const noticias= [];
-    db.collection("Noticias").get({
-    })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            noticias.push(doc.data());
-        }) ;   
-        res.render('./ModuloNoticia',{noticias})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
-}
-controlador.ModuloContacto = (req, res) => {
-    //res.render('./ModuloContacto')
-    const contactos= [];
-    db.collection("contacto").get({    
     })
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log(doc.id,  "id");
-                let id = doc.id;
-                let direccion= doc.data().direccion;
-                let telefono=doc.data().telefono;
-                let extencion=doc.data().extencion;
-                let jefe=doc.data().jefe;
-                let correojefe=doc.data().correojefe;
-                let secre=doc.data().secre;
-                let correosecre=doc.data().correosecre;
-                contacto = {
-                    id: id,
-                    direccion: direccion,
-                    telefono: telefono,
-                    extencion: extencion,
-                    jefe:jefe,
-                    correojefe:correojefe,
-                    secre:secre,
-                    correosecre:correosecre
-                }
-                
-                contactos.push(contacto);
-                console.log(contactos,  "contacto");
+                usuarios.push(doc.data());
             });
-            res.render('./ModuloContacto',{contactos:contactos})
+            res.render('./ModuloUsuarios', { usuarios })
         })
         .catch((error) => {
             console.error("Error: ", error);
         });
 }
+controlador.ModuloNoticia = (req, res) => {
+    //res.render('./ModuloNoticia')
+    const noticias = [];
+    db.collection("Noticias").get({
+    })
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                noticias.push(doc.data());
+            });
+            res.render('./ModuloNoticia', { noticias })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+}
+controlador.ModuloContacto = (req, res) => {
+    //res.render('./ModuloContacto')
+    const contactos = [];
+    db.collection("contacto").get({
+    })
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(doc.id, "id");
+                let id = doc.id;
+                let direccion = doc.data().direccion;
+                let telefono = doc.data().telefono;
+                let extencion = doc.data().extencion;
+                let jefe = doc.data().jefe;
+                let correojefe = doc.data().correojefe;
+                let secre = doc.data().secre;
+                let correosecre = doc.data().correosecre;
+                contacto = {
+                    id: id,
+                    direccion: direccion,
+                    telefono: telefono,
+                    extencion: extencion,
+                    jefe: jefe,
+                    correojefe: correojefe,
+                    secre: secre,
+                    correosecre: correosecre
+                }
 
+                contactos.push(contacto);
+                console.log(contactos, "contacto");
+            });
+            res.render('./ModuloContacto', { contactos: contactos })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+}
+controlador.eliminarcontacto = (req, res) => {
+    db.collection("contacto").doc(req.params.id).delete()
+        .then(() => {
+            res.redirect('/contacto');
+        }).catch((error) => {
+            console.error("Error: ", error);
+        });
 
+}
 controlador.ModuloInfoOrganizacional = (req, res) => {
-    //res.render('./ModuloInfoOrganizacional')
-    const infoorganizacional= [];
+    
+    const infoorganizacional = [];
     db.collection("InfoOrganizacional").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            infoorganizacional.push(doc.data());
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                infoorganizacional.push(doc.data());
+                let id = doc.id;
+                let mision = doc.data().mision;
+                let vision = doc.data().vision;
+                let objetivos = doc.data().objetivos;
+                let organigrama = doc.data().organigrama;
+                informacion = {
+                    id: id,
+                    mision: mision,
+                    vision: vision,
+                    objetivos: objetivos,
+                    organigrama: organigrama,
+                }
+                infoorganizacional.push(informacion);
+            });
+            res.render('./ModuloInfoOrganizacional', { infoorganizacional:infoorganizacional })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
         });
-        res.render('./ModuloInfoOrganizacional',{infoorganizacional})     
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
 }
 
 controlador.MostrarNoticia = (req, res) => {
@@ -190,14 +210,14 @@ controlador.MostrarNoticia = (req, res) => {
 controlador.guardarcontacto = (req, res) => {
     console.log(req.body);
     db.collection("contacto").add({
-        direccion:req.body.txtdire,
+        direccion: req.body.txtdire,
         telefono: req.body.txttele,
         conmutador: req.body.txtconmu,
         extencion: req.body.txtext,
         jefe: req.body.txtjefe,
         correojefe: req.body.txtcorrjefe,
         secre: req.body.txtsecre,
-        correosecre: req.body.txtcorrsecre      
+        correosecre: req.body.txtcorrsecre
     })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -213,35 +233,35 @@ controlador.guardarcontacto = (req, res) => {
 
 
 controlador.leercontacto = (req, res) => {
-    const contactos= [];
-    db.collection("contacto").get({    
+    const contactos = [];
+    db.collection("contacto").get({
     })
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log(doc.id,  "id");
+                console.log(doc.id, "id");
                 let id = doc.id;
-                let direccion= doc.data().direccion;
-                let telefono=doc.data().telefono;
-                let extencion=doc.data().extencion;
-                let jefe=doc.data().jefe;
-                let correojefe=doc.data().correojefe;
-                let secre=doc.data().secre;
-                let correosecre=doc.data().correosecre;
+                let direccion = doc.data().direccion;
+                let telefono = doc.data().telefono;
+                let extencion = doc.data().extencion;
+                let jefe = doc.data().jefe;
+                let correojefe = doc.data().correojefe;
+                let secre = doc.data().secre;
+                let correosecre = doc.data().correosecre;
                 contacto = {
                     id: id,
                     direccion: direccion,
                     telefono: telefono,
                     extencion: extencion,
-                    jefe:jefe,
-                    correojefe:correojefe,
-                    secre:secre,
-                    correosecre:correosecre
+                    jefe: jefe,
+                    correojefe: correojefe,
+                    secre: secre,
+                    correosecre: correosecre
                 }
-                
+
                 contactos.push(contacto);
-                console.log(contactos,  "contacto");
+                console.log(contactos, "contacto");
             });
-            res.render('./ModuloContacto',{contactos:contactos})
+            res.render('./ModuloContacto', { contactos: contactos })
         })
         .catch((error) => {
             console.error("Error: ", error);
@@ -251,35 +271,35 @@ controlador.leercontacto = (req, res) => {
 controlador.editarcon = (req, res) => {
     console.log(req.params.id, "id");
     db.collection("contacto").doc(req.params.id).get()
-    .then((doc) => {
-        req.body.idcon = req.params.id,
-        req.body.txtdire = doc.data().direccion,
-        req.body.txttele = doc.data().telefono,
-        req.body.txtconmu= doc.data().conmutador,
-        req.body.txtext= doc.data().extencion,
-        req.body.txtjefe= doc.data().jefe,
-        req.body.txtcorrjefe= doc.data().correojefe,
-        req.body.txtsecre= doc.data().secre,
-        req.body.txtcorrsecre= doc.data().correosecre
+        .then((doc) => {
+            req.body.idcon = req.params.id,
+                req.body.txtdire = doc.data().direccion,
+                req.body.txttele = doc.data().telefono,
+                req.body.txtconmu = doc.data().conmutador,
+                req.body.txtext = doc.data().extencion,
+                req.body.txtjefe = doc.data().jefe,
+                req.body.txtcorrjefe = doc.data().correojefe,
+                req.body.txtsecre = doc.data().secre,
+                req.body.txtcorrsecre = doc.data().correosecre
 
-    })
-    .catch((error) => {
-        console.log("Error: ", error);
-    });
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
 }
 
 controlador.actualizarContacto = (req, res) => {
     console.log(req.body);
 
     db.collection("contacto").doc('RxxrlnHFH6nrfvw0JMO4').set({
-        direccion:req.body.txtdire,
+        direccion: req.body.txtdire,
         telefono: req.body.txttele,
         conmutador: req.body.txtconmu,
         extencion: req.body.txtext,
         jefe: req.body.txtjefe,
         correojefe: req.body.txtcorrjefe,
         secre: req.body.txtsecre,
-        correosecre: req.body.txtcorrsecre      
+        correosecre: req.body.txtcorrsecre
     })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -298,10 +318,10 @@ controlador.guardarInfo = (req, res) => {
     console.log(req.body);
 
     db.collection("InfoOrganizacional").add({
-        mision:req.body.mision,
+        mision: req.body.mision,
         vision: req.body.vision,
         objetivos: req.body.objetivos,
-        organigrama: req.body.organigrama,   
+        organigrama: req.body.organigrama,
     })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -315,29 +335,50 @@ controlador.guardarInfo = (req, res) => {
 }
 
 controlador.leerinfoorganizacional = (req, res) => {
-    const infoorganizacional= [];
+    const infoorganizacional = [];
     db.collection("InfoOrganizacional").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            infoorganizacional.push(doc.data());
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                infoorganizacional.push(doc.data());
+                let id = doc.id;
+                let mision = doc.data().mision;
+                let vision = doc.data().vision;
+                let objetivos = doc.data().objetivos;
+                let organigrama = doc.data().organigrama;
+                informacion = {
+                    id: id,
+                    mision: mision,
+                    vision: vision,
+                    objetivos: objetivos,
+                    organigrama: organigrama,
+                }
+                infoorganizacional.push(informacion);
+            });
+            res.render('./ModuloInfoOrganizacional', { infoorganizacional:infoorganizacional })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
         });
-        res.render('./ModuloInfoOrganizacional',{infoorganizacional})     
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
 }
+controlador.eliminarinfoorganizacional = (req, res) => {
+    db.collection("InfoOrganizacional").doc(req.params.id).delete()
+        .then(() => {
+            res.redirect('/informacion');
+        }).catch((error) => {
+            console.error("Error: ", error);
+        });
 
+}
 controlador.guardarNoticia = (req, res) => {
     console.log(req.body);
 
     db.collection("Noticias").add({
-        Titulo:req.body.titulo,
+        Titulo: req.body.titulo,
         Descripcion: req.body.descripcion,
         imagen: req.body.imagen,
-        autor: req.body.Autor,  
-        fecha_pub: req.body.fecha, 
+        autor: req.body.Autor,
+        fecha_pub: req.body.fecha,
     })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -353,19 +394,19 @@ controlador.guardarNoticia = (req, res) => {
 }
 
 controlador.leernoticia = (req, res) => {
-    const noticias= [];
+    const noticias = [];
     db.collection("Noticias").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            noticias.push(doc.data());
-        }) ;   
-        res.render('./ModuloNoticia',{noticias})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
-   
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                noticias.push(doc.data());
+            });
+            res.render('./ModuloNoticia', { noticias })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
+
 }
 
 
@@ -374,11 +415,11 @@ controlador.registrarUsuario = (req, res) => {
     console.log(req.body);
 
     db.collection("Usuarios").add({
-        Usuario:req.body.nombre,
+        Usuario: req.body.nombre,
         Contrasena: req.body.contrasena,
         Contrasena2: req.body.contrasena2,
-        Rol: req.body.rols,  
-            })
+        Rol: req.body.rols,
+    })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
             alert('Datos agregados correctamente', docRef.id);
@@ -395,9 +436,9 @@ controlador.registrarUsuarioAdmi = (req, res) => {
     console.log(req.body);
 
     db.collection("Usuarios").add({
-        Usuario:req.body.nom,
+        Usuario: req.body.nom,
         Contrasena: req.body.contrasena,
-            })
+    })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
             alert('Datos agregados correctamente', docRef.id);
@@ -413,22 +454,22 @@ controlador.registrarUsuarioAdmi = (req, res) => {
 
 
 controlador.leerUsuarios = (req, res) => {
-    const usuarios= [];
+    const usuarios = [];
     db.collection("Usuarios").get({
     })
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc)=> {
-            usuarios.push(doc.data());
-        }) ;   
-        res.render('./ModuloUsuarios',{usuarios})
-    })  
-    .catch((error) => {
-        console.error("Error: ", error);
-    });
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                usuarios.push(doc.data());
+            });
+            res.render('./ModuloUsuarios', { usuarios })
+        })
+        .catch((error) => {
+            console.error("Error: ", error);
+        });
 }
 
 controlador.registrofirebase = (req, res) => {
-    
+
     firebase.auth().createUserWithEmailAndPassword(req.body.nom, req.body.con)
         .then(() => {
             console.log("El usuario se ha registrado");
@@ -439,7 +480,7 @@ controlador.registrofirebase = (req, res) => {
         });
 }
 
-controlador.logeado = (req, res) => {   
+controlador.logeado = (req, res) => {
     firebase.auth().signInWithEmailAndPassword(req.body.nomm, req.body.conn)
         .then((user) => {
             //sessionStorage.setItem('login', user.email);

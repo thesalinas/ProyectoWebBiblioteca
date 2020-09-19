@@ -43,6 +43,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th scope="col">id</th>
                             <th scope="col">Mision</th>
                             <th scope="col">Vision</th>
                             <th scope="col">Objetivos</th>
@@ -53,14 +54,20 @@
                     <tbody id="">
                         {{#each infoorganizacional}}
                         <tr>
+                            <td>{{id}}</td>
                             <td>{{mision}}</td>
                             <td>{{vision}}</td>
                             <td>{{objetivos}}</td>
                             <td>{{organigrama}}</td>
-                            <td>
-                            <button onclick="" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                            <button onclick="" class="btn btn-info"><i class="far fa-edit"></i></button>
-                            </td>
+                            <form action="/deleteInformacion/{{id}}" method="get">
+                                <td>
+                                    <button type="submit" class="btn btn-danger openBtn" data-toggle="modal"
+                                        class="btn btn-danger">
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </form>
+                            
                         </tr>
                         {{/each}}
                     </tbody>

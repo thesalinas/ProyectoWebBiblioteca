@@ -73,7 +73,7 @@
                         <td>{{correojefe}}</td>
                         <td>{{secre}}</td>
                         <td>{{correosecre}}</td>
-                        <form action="/deleteProduct/{{id}}" method="get">
+                        <form action="/deleteContacto/{{id}}" method="get">
                             <td>
                                 <button type="submit" class="btn btn-danger openBtn" data-toggle="modal"
                                     class="btn btn-danger">
@@ -81,13 +81,6 @@
                                 </button>
                             </td>
                         </form>
-
-
-                        <td>
-                            <!--<button href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>-->
-                            <a href="/rta/{{@key}}" class="btn btn-info"><i class="far fa-edit"></i></a>
-                        </td>
-
                     </tr>
                     {{/each}}
 

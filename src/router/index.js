@@ -43,14 +43,6 @@ router.get('/registrofirebase', controlador.MostrarNoticia);
 router.post('/regis', controlador.registrofirebase);
 router.post('/loge', controlador.logeado);
 
-router.get('/deleteProduct/:id', (req, res) => {
-
-    console.log(req.params.id);
-    db.collection("contacto").doc(req.params.id).delete()
-        .then(() => {
-            res.redirect('/admin');
-        }).catch((error) => {
-            console.error("Error: ", error);
-        });
-});
+router.get('/deleteContacto/:id', controlador.eliminarcontacto);
+router.get('/deleteInformacion/:id', controlador.eliminarinfoorganizacional);
 module.exports = router;
