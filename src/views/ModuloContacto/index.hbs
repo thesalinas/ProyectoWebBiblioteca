@@ -58,7 +58,9 @@
                         <th scope="col">Correo jefe</th>
                         <th scope="col">Secretaria division</th>
                         <th scope="col">Correo secretaria</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col"></th> 
+                        <th scope="col"></th>
+
                     </tr>
                 </thead>
                 <tbody name="">
@@ -78,6 +80,13 @@
                                 <button type="submit" class="btn btn-danger openBtn" data-toggle="modal"
                                     class="btn btn-danger">
                                     Eliminar
+                                </button>
+                            </td>
+                        </form>
+                        <form action="/editContacto/{{id}}" method="get">
+                            <td>
+                                <button type="submit" class="btn btn-primary openBtn" class="btn btn-danger">
+                                    Editar
                                 </button>
                             </td>
                         </form>

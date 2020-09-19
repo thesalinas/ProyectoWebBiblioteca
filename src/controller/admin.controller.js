@@ -140,6 +140,7 @@ controlador.ModuloContacto = (req, res) => {
                 let id = doc.id;
                 let direccion = doc.data().direccion;
                 let telefono = doc.data().telefono;
+                let conmutador= doc.data().conmutador;
                 let extencion = doc.data().extencion;
                 let jefe = doc.data().jefe;
                 let correojefe = doc.data().correojefe;
@@ -149,6 +150,7 @@ controlador.ModuloContacto = (req, res) => {
                     id: id,
                     direccion: direccion,
                     telefono: telefono,
+                    conmutador:conmutador,
                     extencion: extencion,
                     jefe: jefe,
                     correojefe: correojefe,
@@ -157,7 +159,7 @@ controlador.ModuloContacto = (req, res) => {
                 }
 
                 contactos.push(contacto);
-                console.log(contactos, "contacto");
+
             });
             res.render('./ModuloContacto', { contactos: contactos })
         })
@@ -175,7 +177,7 @@ controlador.eliminarcontacto = (req, res) => {
 
 }
 controlador.ModuloInfoOrganizacional = (req, res) => {
-    
+
     const infoorganizacional = [];
     db.collection("InfoOrganizacional").get({
     })
@@ -195,8 +197,9 @@ controlador.ModuloInfoOrganizacional = (req, res) => {
                     organigrama: organigrama,
                 }
                 infoorganizacional.push(informacion);
+                console.log(infoorganizacional, "contacto");
             });
-            res.render('./ModuloInfoOrganizacional', { infoorganizacional:infoorganizacional })
+            res.render('./ModuloInfoOrganizacional', { infoorganizacional: infoorganizacional })
         })
         .catch((error) => {
             console.error("Error: ", error);
@@ -242,6 +245,7 @@ controlador.leercontacto = (req, res) => {
                 let id = doc.id;
                 let direccion = doc.data().direccion;
                 let telefono = doc.data().telefono;
+                let conmutador= doc.data().conmutador;
                 let extencion = doc.data().extencion;
                 let jefe = doc.data().jefe;
                 let correojefe = doc.data().correojefe;
@@ -251,6 +255,7 @@ controlador.leercontacto = (req, res) => {
                     id: id,
                     direccion: direccion,
                     telefono: telefono,
+                    conmutador:conmutador,
                     extencion: extencion,
                     jefe: jefe,
                     correojefe: correojefe,
@@ -259,7 +264,7 @@ controlador.leercontacto = (req, res) => {
                 }
 
                 contactos.push(contacto);
-                console.log(contactos, "contacto");
+
             });
             res.render('./ModuloContacto', { contactos: contactos })
         })
@@ -268,7 +273,29 @@ controlador.leercontacto = (req, res) => {
         });
 }
 
-controlador.editarcon = (req, res) => {
+controlador.editContacto = (req, res) => {
+    var id = req.params.id;
+    console.log(id)
+    db.collection("contacto").doc(id).get()
+        .then((doc) => {
+            var id = doc.id;
+            var direccion = doc.data().direccion;
+            var telefono = doc.data().telefono;
+            var conmutador= doc.data().conmutador;
+            var extencion = doc.data().extencion;
+            var jefe = doc.data().jefe;
+            var correojefe = doc.data().correojefe;
+            var secre = doc.data().secre;
+            var correosecre = doc.data().correosecre;
+            res.render('./ActualizarContacto', { direccion, telefono,conmutador, extencion,jefe,correojefe,secre,correosecre, id });
+        })
+        .catch(function (error) {
+            console.log("error :", error);
+        })
+
+}
+
+/*controlador.editarcon = (req, res) => {
     console.log(req.params.id, "id");
     db.collection("contacto").doc(req.params.id).get()
         .then((doc) => {
@@ -286,25 +313,24 @@ controlador.editarcon = (req, res) => {
         .catch((error) => {
             console.log("Error: ", error);
         });
-}
+}*/
 
-controlador.actualizarContacto = (req, res) => {
+controlador.ActualizarContacto = (req, res) => {
     console.log(req.body);
 
-    db.collection("contacto").doc('RxxrlnHFH6nrfvw0JMO4').set({
-        direccion: req.body.txtdire,
-        telefono: req.body.txttele,
-        conmutador: req.body.txtconmu,
-        extencion: req.body.txtext,
-        jefe: req.body.txtjefe,
-        correojefe: req.body.txtcorrjefe,
-        secre: req.body.txtsecre,
-        correosecre: req.body.txtcorrsecre
+    db.collection("contacto").doc(req.body.txti).update({
+        direccion: req.body.txtdir,
+        telefono: req.body.txttel,
+        conmutador: req.body.txtconm,
+        extencion: req.body.txtex,
+        jefe: req.body.txtjef,
+        correojefe: req.body.txtcorrjef,
+        secre: req.body.txtsecr,
+        correosecre: req.body.txtcorrsecr
     })
         .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
-            alert('Datos agregados correctamente', docRef.id);
-            limpiarDatos();
+            console.log("Document successfully updated!");
+            req.render('./admin');
         })
         .catch((error) => {
             console.error("Error: ", error);
@@ -355,7 +381,7 @@ controlador.leerinfoorganizacional = (req, res) => {
                 }
                 infoorganizacional.push(informacion);
             });
-            res.render('./ModuloInfoOrganizacional', { infoorganizacional:infoorganizacional })
+            res.render('./ModuloInfoOrganizacional', { infoorganizacional: infoorganizacional })
         })
         .catch((error) => {
             console.error("Error: ", error);

@@ -17,6 +17,7 @@ router.get('/mostrarnoticias', controlador.mostrartnoticias);
 
 router.get('/admin', controlador.admin);
 router.get('/contacto', controlador.ModuloContacto);
+
 router.get('/noticia', controlador.ModuloNoticia);
 router.get('/Login', controlador.Login);
 router.get('/Registrarse', controlador.Registrarse);
@@ -32,7 +33,7 @@ router.get('/guardarInfo', controlador.leerinfoorganizacional);
 router.post('/guardarNoticia', controlador.guardarNoticia);
 router.get('/guardarNoticia', controlador.leernoticia);
 
-router.get('/rta/:id', controlador.editarcon);
+//router.get('/rta/:id', controlador.editarcon);
 
 router.post('/registrarUsuario', controlador.registrarUsuario);
 
@@ -45,4 +46,8 @@ router.post('/loge', controlador.logeado);
 
 router.get('/deleteContacto/:id', controlador.eliminarcontacto);
 router.get('/deleteInformacion/:id', controlador.eliminarinfoorganizacional);
+
+router.get('/editContacto/:id', controlador.editContacto);
+router.post('/ActualizarContacto',controlador.ActualizarContacto);
+
 module.exports = router;

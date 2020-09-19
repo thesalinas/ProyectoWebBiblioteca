@@ -1,0 +1,35 @@
+<section class="info">
+    <div class="mi-flex row">
+        <div id="Noticia" class="container">
+            <h2>Agregar Informacion de Contacto</h2>
+            <div class="row mb-3">
+                <div class="col">
+                    <form class="form" method="POST" action="/actualizarcontacto">
+                        <!--<input class="d-none" type="text" name="idcon">-->
+                        <label for="">id</label>
+                        <input class="form-control" type="text" name="txti" value="{{id}}">
+                        <label for="">Direccion</label>
+                        <input class="form-control" type="text" name="txtdir" value="{{direccion}}">
+                        <label for="">Telefono</label>
+                        <input class="form-control" type="text" name="txttel" value="{{telefono}}">
+                        <label for="">Conmutador</label>
+                        <input class="form-control" type="text" name="txtconm" value="{{conmutador}}">
+                        <label for="">Extencion</label>
+                        <input class="form-control" type="text" name="txtex" value="{{extencion}}">
+                        <label for="">Jefe direccion</label>
+                        <input class="form-control" type="text" name="txtjef" value="{{jefe}}">
+                        <label for="">Correo Jefe direccion</label>
+                        <input class="form-control" type="text" name="txtcorrjef" value="{{correojefe}}">
+                        <label for="">Secretaria de la division</label>
+                        <input class="form-control" type="text" name="txtsecr" value="{{secre}}">
+                        <label for="">Correo Secretaria</label>
+                        <input class="form-control" type="text" name="txtcorrsecr" value="{{correosecre}}">
+                        <button name="btnActualizarContacto" class="btn btn-primary">Actualizar
+                            Contacto</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
